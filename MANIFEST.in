@@ -1,2 +1,3 @@
 include README.rst
 include COPYING
+recursive-include yoga_image_optimizer/data/ui/ *.glade
