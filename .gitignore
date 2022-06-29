@@ -1,0 +1,6 @@
+build/
+dist/
+__env__/
+*.egg*
+__pycache__
+.nox
