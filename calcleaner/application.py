@@ -1,9 +1,13 @@
+from concurrent.futures import ThreadPoolExecutor
+
 from gi.repository import Gtk
 from gi.repository import Gio
+from gi.repository import GLib
 
 from . import APPLICATION_ID
 from .main_window import MainWindow
 from .caldav_dialog import CaldavDialog
+from . import caldav_helpers
 
 
 class CalcleanerApplication(Gtk.Application):
@@ -49,12 +53,46 @@ class CalcleanerApplication(Gtk.Application):
                 "username": caldav_account["username"],
                 "password": caldav_account["password"],
                 "calendars": {
-                    # "url": {"name": name, "color": color, "events_count": 0}
+                    # "url": {"name": name, "color": color, "event_count": 0}
                 },
             }
             self.fetch_calendars()
 
     def fetch_calendars(self):
+        # self._fetch_calendars_async()
+        self._fetch_calendars()  # FIXME
+        print(self.accounts)  # FIXME
+
+    def _fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
-        # TODO
+
+        for caldav_url, account in self.accounts.items():
+            self.accounts[caldav_url]["calendars"] = caldav_helpers.fetch_calendars(
+                caldav_url,
+                account["username"],
+                account["password"],
+            )
+
         self._main_window.set_state(self._main_window.STATE_CALENDAR_LIST)
+
+    def _fetch_calendars_async(self):
+        self._main_window.set_state(self._main_window.STATE_UPDATING)
+
+        def _async_fetch_calendars(accounts):
+            for caldav_url, account in accounts.items():
+                self.accounts[caldav_url]["calendars"] = caldav_helpers.fetch_calendars(
+                    caldav_url,
+                    account["username"],
+                    account["password"],
+                )
+
+        executor = ThreadPoolExecutor(max_workers=1)
+        future = executor.submit(_async_fetch_calendars, self.accounts)
+
+        def _async_wait_loop():
+            if future.done():
+                self._main_window.set_state(self._main_window.STATE_CALENDAR_LIST)
+                return
+            GLib.timeout_add_seconds(0.1, _async_wait_loop)
+
+        _async_wait_loop()
