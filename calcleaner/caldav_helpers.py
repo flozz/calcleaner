@@ -1,3 +1,5 @@
+from urllib.parse import urlparse
+
 from caldav import DAVClient
 
 
@@ -14,3 +16,7 @@ def fetch_calendars(url, username, password):
             }
 
     return calendars
+
+
+def readable_account_url(url, username):
+    return "@".join([username, urlparse(url).netloc])

@@ -59,9 +59,9 @@ class CalcleanerApplication(Gtk.Application):
             self.fetch_calendars()
 
     def fetch_calendars(self):
-        # self._fetch_calendars_async()
-        self._fetch_calendars()  # FIXME
-        print(self.accounts)  # FIXME
+        self._fetch_calendars_async()
+        # self._fetch_calendars()  # FIXME
+        # print(self.accounts)  # FIXME
 
     def _fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
