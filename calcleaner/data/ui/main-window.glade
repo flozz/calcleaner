@@ -237,6 +237,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="action-name">app.refresh</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -389,6 +390,7 @@
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="receives-default">True</property>
+        <property name="action-name">app.refresh</property>
         <property name="relief">none</property>
         <child>
           <object class="GtkImage">

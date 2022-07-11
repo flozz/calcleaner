@@ -32,6 +32,11 @@ class CalcleanerApplication(Gtk.Application):
         action.connect("activate", lambda a, p: self.add_caldav())
         self.add_action(action)
 
+        # Action: app.refresh
+        action = Gio.SimpleAction.new("refresh", None)
+        action.connect("activate", lambda a, p: self.fetch_calendars())
+        self.add_action(action)
+
     def do_activate(self):
         if not self._main_window:
             self._main_window = MainWindow(self)
@@ -61,10 +66,10 @@ class CalcleanerApplication(Gtk.Application):
             self.fetch_calendars()
 
     def fetch_calendars(self):
-        self._fetch_calendars_async()
-
-    def _fetch_calendars_async(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
+
+        for account in self.accounts:
+            self.accounts[account]["calendars"] = {}
 
         errors = []
 

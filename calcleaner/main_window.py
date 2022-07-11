@@ -109,6 +109,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def _update_treeview(self):
         app = self.get_application()
+        self._calendar_liststore.clear()
 
         for caldav_url, account in app.accounts.items():
             for calendar in account["calendars"].values():
