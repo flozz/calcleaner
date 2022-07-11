@@ -1,4 +1,5 @@
 from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 
 from . import APPLICATION_NAME
 from . import data_helpers
@@ -31,6 +32,13 @@ class MainWindow(Gtk.ApplicationWindow):
 
         self._header = self._builder.get_object("main-window-header")
         self.set_titlebar(self._header)
+
+        initial_logo = self._builder.get_object("initial-logo")
+        initial_logo.set_from_pixbuf(
+            GdkPixbuf.Pixbuf.new_from_file(
+                data_helpers.find_data_path("images/calcleaner_128.png")
+            )
+        )
 
         self._calendar_liststore = None
         self._initialize_treeview()

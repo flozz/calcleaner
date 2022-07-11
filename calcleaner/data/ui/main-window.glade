@@ -27,7 +27,7 @@
         <property name="orientation">vertical</property>
         <property name="spacing">24</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkImage" id="initial-logo">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="stock">gtk-missing-image</property>
