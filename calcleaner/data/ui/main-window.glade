@@ -292,7 +292,6 @@
               <object class="GtkTreeView" id="calendar-treeview">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="headers-visible">False</property>
                 <property name="enable-search">False</property>
                 <property name="enable-grid-lines">horizontal</property>
               </object>

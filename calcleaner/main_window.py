@@ -17,8 +17,8 @@ class MainWindow(Gtk.ApplicationWindow):
             self,
             application=app,
             title=APPLICATION_NAME,
-            default_width=500,
-            default_height=300,
+            default_width=400,
+            default_height=350,
             resizable=True,
         )
 
@@ -76,6 +76,7 @@ class MainWindow(Gtk.ApplicationWindow):
             str,  # Color
             str,  # Account Name
             str,  # Calendar Name
+            int,  # Event count
         )
         calendar_treeview.set_model(self._calendar_liststore)
 
@@ -89,7 +90,7 @@ class MainWindow(Gtk.ApplicationWindow):
         column.set_expand(False)
         calendar_treeview.append_column(column)
 
-        column = Gtk.TreeViewColumn()
+        column = Gtk.TreeViewColumn("Calendar")
         column.set_expand(True)
         calendar_name_renderer = Gtk.CellRendererText(weight=700)
         account_name_renderer = Gtk.CellRendererText(weight=300, scale=0.75)
@@ -100,11 +101,18 @@ class MainWindow(Gtk.ApplicationWindow):
         column.add_attribute(account_name_renderer, "text", 2)
         calendar_treeview.append_column(column)
 
+        column = Gtk.TreeViewColumn(
+            "Events",
+            cell_renderer=Gtk.CellRendererText(),
+            text=4,
+        )
+        column.set_expand(True)
+        calendar_treeview.append_column(column)
+
         renderer = Gtk.CellRendererToggle()
         renderer.connect("toggled", _toggle)
-        column = Gtk.TreeViewColumn(cell_renderer=renderer, active=0)
+        column = Gtk.TreeViewColumn("Purge", cell_renderer=renderer, active=0)
         column.set_expand(False)
-        column.set_fixed_width(50)
         calendar_treeview.append_column(column)
 
     def _update_treeview(self):
@@ -121,5 +129,6 @@ class MainWindow(Gtk.ApplicationWindow):
                             caldav_url, account["username"]
                         ),
                         calendar["name"],
+                        calendar["event_count"],
                     ]
                 )
