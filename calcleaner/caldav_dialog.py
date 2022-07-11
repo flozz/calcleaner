@@ -3,6 +3,7 @@ import re
 from gi.repository import Gtk
 
 from . import data_helpers
+from . import caldav_helpers
 
 
 class CaldavDialog(object):
@@ -51,6 +52,10 @@ class CaldavDialog(object):
 
     def _on_validate(self, *args):
         self._response = {
+            "name": caldav_helpers.readable_account_url(
+                self._url_entry.get_text(),
+                self._username_entry.get_text(),
+            ),
             "url": self._url_entry.get_text(),
             "username": self._username_entry.get_text(),
             "password": self._password_entry.get_text(),

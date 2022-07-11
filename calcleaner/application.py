@@ -73,12 +73,13 @@ class CalcleanerApplication(Gtk.Application):
         caldav_dialog._password_entry.set_text("password")
         # XXX DEBUG ===============================================================
 
-        caldav_account = caldav_dialog.run()
+        account = caldav_dialog.run()
 
-        if caldav_account:
-            self.accounts[caldav_account["url"]] = {
-                "username": caldav_account["username"],
-                "password": caldav_account["password"],
+        if account:
+            self.accounts[account["name"]] = {
+                "url": account["url"],
+                "username": account["username"],
+                "password": account["password"],
                 "calendars": {
                     # "url": {"name": name, "color": color, "event_count": 0}
                 },
@@ -94,17 +95,17 @@ class CalcleanerApplication(Gtk.Application):
         errors = []
 
         def _async_fetch_calendars(accounts):
-            for caldav_url, account in accounts.items():
+            for account_name, account in accounts.items():
                 try:
-                    self.accounts[caldav_url][
+                    self.accounts[account_name][
                         "calendars"
                     ] = caldav_helpers.fetch_calendars(
-                        caldav_url,
+                        account["url"],
                         account["username"],
                         account["password"],
                     )
                 except Exception as error:
-                    error.account = caldav_url
+                    error.account = account_name
                     errors.append(error)
                     print(error)
                     raise error
@@ -126,7 +127,7 @@ class CalcleanerApplication(Gtk.Application):
                         # fmt: off
                         description = "Unable to connect to the server.\n\n"
                         description += "🞄 Check that there is no error in the CalDAV server URL\n"
-                        description += "🞄 Check that the server is currently accessible\n"
+                        description += "🞄 Check that the server is currently available\n"
                         description += "🞄 Check you are connected to the internet"
                         # fmt: on
                     elif isinstance(error, caldav.lib.error.AuthorizationError):

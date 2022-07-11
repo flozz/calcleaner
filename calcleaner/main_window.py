@@ -3,7 +3,6 @@ from gi.repository import GdkPixbuf
 
 from . import APPLICATION_NAME
 from . import data_helpers
-from . import caldav_helpers
 
 
 class MainWindow(Gtk.ApplicationWindow):
@@ -127,15 +126,13 @@ class MainWindow(Gtk.ApplicationWindow):
         app = self.get_application()
         self._calendar_liststore.clear()
 
-        for caldav_url, account in app.accounts.items():
+        for account_name, account in app.accounts.items():
             for calendar in account["calendars"].values():
                 self._calendar_liststore.append(
                     [
                         True,
                         '<span fgcolor="%s">⬤</span>\n' % calendar["color"],
-                        caldav_helpers.readable_account_url(
-                            caldav_url, account["username"]
-                        ),
+                        account_name,
                         calendar["name"],
                         calendar["event_count"],
                     ]
