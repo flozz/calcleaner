@@ -10,6 +10,7 @@ from . import APPLICATION_ID
 from .main_window import MainWindow
 from .caldav_dialog import CaldavDialog
 from . import caldav_helpers
+from .about_dialog import AboutDialog
 
 
 class CalcleanerApplication(Gtk.Application):
@@ -37,12 +38,31 @@ class CalcleanerApplication(Gtk.Application):
         action.connect("activate", lambda a, p: self.fetch_calendars())
         self.add_action(action)
 
+        # Action: app.about
+        action = Gio.SimpleAction.new("about", None)
+        action.connect("activate", lambda a, p: self.about())
+        self.add_action(action)
+
+        # Action: app.quit
+        action = Gio.SimpleAction.new("quit", None)
+        action.connect("activate", lambda a, p: self.quit())
+        self.add_action(action)
+        self.set_accels_for_action("app.quit", ["<Ctrl>Q", "<Ctrl>W"])
+
     def do_activate(self):
         if not self._main_window:
             self._main_window = MainWindow(self)
 
         self._main_window.show()
         self._main_window.present()
+
+    def quit(self):
+        Gtk.Application.quit(self)
+
+    def about(self):
+        about_dialog = AboutDialog(parent=self._main_window)
+        about_dialog.run()
+        about_dialog.destroy()
 
     def add_caldav(self):
         caldav_dialog = CaldavDialog(parent_window=self._main_window)
@@ -113,7 +133,7 @@ class CalcleanerApplication(Gtk.Application):
                         # fmt: off
                         description = "You are not authorized to access this resource.\n\n"
                         description += "🞄 Check your login and password\n"
-                        description += "🞄 Check you are allowed to access to the server"
+                        description += "🞄 Check you are allowed to access the server"
                         # fmt: on
                     elif isinstance(error, caldav.lib.error.PropfindError):
                         # fmt: off
