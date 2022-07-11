@@ -5,3 +5,4 @@ __env__/
 __pycache__
 .nox
 *~
+*#

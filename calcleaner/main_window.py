@@ -9,6 +9,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
     STATE_INITIAL = "state-initial"
     STATE_UPDATING = "state-updating"
+    STATE_ERROR = "state-error"
     STATE_CALENDAR_LIST = "state-calendar-list"
 
     def __init__(self, app):
@@ -16,7 +17,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self,
             application=app,
             title=APPLICATION_NAME,
-            default_width=400,
+            default_width=500,
             default_height=300,
             resizable=True,
         )
@@ -28,6 +29,9 @@ class MainWindow(Gtk.ApplicationWindow):
         content = self._builder.get_object("main-window-content")
         self.add(content)
 
+        self._header = self._builder.get_object("main-window-header")
+        self.set_titlebar(self._header)
+
         self._calendar_liststore = None
         self._initialize_treeview()
 
@@ -36,11 +40,16 @@ class MainWindow(Gtk.ApplicationWindow):
     def set_state(self, state):
         initial_root = self._builder.get_object("state-initial")
         updating_root = self._builder.get_object("state-updating")
+        error_root = self._builder.get_object("state-error")
         calendar_list_root = self._builder.get_object("state-calendar-list")
+        refresh_button = self._builder.get_object("refresh-button")
 
         initial_root.set_visible(state == self.STATE_INITIAL)
         updating_root.set_visible(state == self.STATE_UPDATING)
+        error_root.set_visible(state == self.STATE_ERROR)
         calendar_list_root.set_visible(state == self.STATE_CALENDAR_LIST)
+
+        refresh_button.set_visible(state in [self.STATE_ERROR, self.STATE_CALENDAR_LIST])
 
         if state == self.STATE_CALENDAR_LIST:
             self._update_treeview()
