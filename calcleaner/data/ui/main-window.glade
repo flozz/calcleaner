@@ -123,6 +123,7 @@
       <object class="GtkGrid" id="state-error">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="valign">center</property>
         <property name="margin-start">18</property>
         <property name="margin-end">18</property>
         <property name="margin-top">18</property>
@@ -144,7 +145,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkExpander" id="more-expander">
+          <object class="GtkExpander" id="error-more-expander">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="margin-top">12</property>
@@ -156,7 +157,7 @@
                 <property name="margin-top">6</property>
                 <property name="label-xalign">0</property>
                 <child>
-                  <object class="GtkLabel" id="more-label">
+                  <object class="GtkLabel" id="error-detail-label">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="margin-left">6</property>
@@ -194,11 +195,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="error-title-label">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
-            <property name="label" translatable="yes">An error occured when fetching the calendars...</property>
+            <property name="label" translatable="yes">An error occured when fetching calendars...</property>
             <property name="selectable">True</property>
             <attributes>
               <attribute name="weight" value="bold"/>
@@ -210,7 +211,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="error-description-label">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
@@ -224,18 +225,47 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">Edit accounts...</property>
+          <object class="GtkButtonBox">
             <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="halign">center</property>
+            <property name="can-focus">False</property>
+            <property name="margin-top">12</property>
+            <property name="spacing">12</property>
+            <property name="layout-style">center</property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Retry</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Edit accounts...</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="halign">center</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="left-attach">0</property>
+            <property name="left-attach">1</property>
             <property name="top-attach">3</property>
-            <property name="width">2</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>

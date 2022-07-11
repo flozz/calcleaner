@@ -49,10 +49,24 @@ class MainWindow(Gtk.ApplicationWindow):
         error_root.set_visible(state == self.STATE_ERROR)
         calendar_list_root.set_visible(state == self.STATE_CALENDAR_LIST)
 
-        refresh_button.set_visible(state in [self.STATE_ERROR, self.STATE_CALENDAR_LIST])
+        refresh_button.set_visible(
+            state in [self.STATE_ERROR, self.STATE_CALENDAR_LIST]
+        )
 
         if state == self.STATE_CALENDAR_LIST:
             self._update_treeview()
+
+    def set_error(self, title="", description="", detail=""):
+        title_label = self._builder.get_object("error-title-label")
+        description_label = self._builder.get_object("error-description-label")
+        detail_label = self._builder.get_object("error-detail-label")
+        more_expander = self._builder.get_object("error-more-expander")
+
+        title_label.set_text(title)
+        description_label.set_text(description)
+        detail_label.set_text(detail)
+
+        more_expander.set_visible(bool(detail))
 
     def _initialize_treeview(self):
         calendar_treeview = self._builder.get_object("calendar-treeview")
