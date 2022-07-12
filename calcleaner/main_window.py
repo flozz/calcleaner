@@ -11,6 +11,7 @@ class MainWindow(Gtk.ApplicationWindow):
     STATE_UPDATING = "state-updating"
     STATE_ERROR = "state-error"
     STATE_CALENDAR_LIST = "state-calendar-list"
+    STATE_CLEANING = "state-cleaning"
 
     def __init__(self, app):
         Gtk.ApplicationWindow.__init__(
@@ -40,6 +41,8 @@ class MainWindow(Gtk.ApplicationWindow):
         )
 
         self._calendar_liststore = None
+        self._column_checkbox = None
+        self._column_progress = None
         self._initialize_treeview()
 
         self.set_state(self.STATE_INITIAL)
@@ -50,15 +53,24 @@ class MainWindow(Gtk.ApplicationWindow):
         error_root = self._builder.get_object("state-error")
         calendar_list_root = self._builder.get_object("state-calendar-list")
         refresh_button = self._builder.get_object("refresh-button")
+        clean_start_button = self._builder.get_object("clean-start-button")
+        clean_stop_button = self._builder.get_object("clean-stop-button")
+        age_spinbutton = self._builder.get_object("age-spinbutton")
 
         initial_root.set_visible(state == self.STATE_INITIAL)
         updating_root.set_visible(state == self.STATE_UPDATING)
         error_root.set_visible(state == self.STATE_ERROR)
-        calendar_list_root.set_visible(state == self.STATE_CALENDAR_LIST)
-
-        refresh_button.set_visible(
-            state in [self.STATE_ERROR, self.STATE_CALENDAR_LIST]
+        calendar_list_root.set_visible(
+            state in [self.STATE_CALENDAR_LIST, self.STATE_CLEANING]
         )
+
+        refresh_button.set_visible(state == self.STATE_CALENDAR_LIST)
+        clean_start_button.set_visible(state == self.STATE_CALENDAR_LIST)
+        clean_stop_button.set_visible(state == self.STATE_CLEANING)
+        age_spinbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
+
+        self._column_checkbox.set_visible(state == self.STATE_CALENDAR_LIST)
+        self._column_progress.set_visible(state == self.STATE_CLEANING)
 
         if state == self.STATE_CALENDAR_LIST:
             self._update_treeview()
@@ -84,6 +96,7 @@ class MainWindow(Gtk.ApplicationWindow):
             str,  # Account Name
             str,  # Calendar Name
             int,  # Event count
+            int,  # Progress
         )
         calendar_treeview.set_model(self._calendar_liststore)
 
@@ -118,9 +131,22 @@ class MainWindow(Gtk.ApplicationWindow):
 
         renderer = Gtk.CellRendererToggle()
         renderer.connect("toggled", _toggle)
-        column = Gtk.TreeViewColumn("Purge", cell_renderer=renderer, active=0)
-        column.set_expand(False)
-        calendar_treeview.append_column(column)
+        self._column_checkbox = Gtk.TreeViewColumn(
+            "Purge",
+            cell_renderer=renderer,
+            active=0,
+        )
+        self._column_checkbox.set_expand(False)
+        calendar_treeview.append_column(self._column_checkbox)
+
+        self._column_progress = Gtk.TreeViewColumn(
+            "Cleaning",
+            cell_renderer=Gtk.CellRendererProgress(),
+            value=5,
+            # text=4,  # TODO
+        )
+        self._column_progress.set_expand(True)
+        calendar_treeview.append_column(self._column_progress)
 
     def _update_treeview(self):
         app = self.get_application()
@@ -135,5 +161,6 @@ class MainWindow(Gtk.ApplicationWindow):
                         account_name,
                         calendar["name"],
                         calendar["event_count"],
+                        42,  # XXX
                     ]
                 )

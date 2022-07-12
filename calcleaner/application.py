@@ -38,6 +38,11 @@ class CalcleanerApplication(Gtk.Application):
         action.connect("activate", lambda a, p: self.fetch_calendars())
         self.add_action(action)
 
+        # Action: app.clean
+        action = Gio.SimpleAction.new("clean", None)
+        action.connect("activate", lambda a, p: self.clean_calendars())
+        self.add_action(action)
+
         # Action: app.about
         action = Gio.SimpleAction.new("about", None)
         action.connect("activate", lambda a, p: self.about())
@@ -156,3 +161,7 @@ class CalcleanerApplication(Gtk.Application):
             GLib.timeout_add_seconds(0.1, _async_wait_loop)
 
         _async_wait_loop()
+
+    def clean_calendars(self):
+        self._main_window.set_state(self._main_window.STATE_CLEANING)
+        # TODO
