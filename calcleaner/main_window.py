@@ -106,7 +106,7 @@ class MainWindow(Gtk.ApplicationWindow):
         column.pack_start(calendar_name_renderer, True)
         column.pack_start(account_name_renderer, True)
         column.get_area().set_orientation(Gtk.Orientation.VERTICAL)
-        column.add_attribute(calendar_name_renderer, "markup", app.calendar_store.FIELDS["calendar_name"]["id"])
+        column.add_attribute(calendar_name_renderer, "text", app.calendar_store.FIELDS["calendar_name"]["id"])
         column.add_attribute(account_name_renderer, "text", app.calendar_store.FIELDS["account_name"]["id"])
         calendar_treeview.append_column(column)
 
