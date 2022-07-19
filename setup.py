@@ -31,6 +31,7 @@ setup(
             "nox",
             "flake8",
             "black",
+            "pytest",
         ]
     },
     entry_points={
