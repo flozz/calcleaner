@@ -108,14 +108,19 @@ class CalcleanerApplication(Gtk.Application):
                         account["password"],
                     )
                     for calendar in calendars:
-                        self.calendar_store.append(
+                        iter_ = self.calendar_store.find_calendar_by_url(calendar["url"])
+
+                        if not iter_:
+                            iter_ = self.calendar_store.append()
+
+                        self.calendar_store.update(
+                            iter_,
                             account_name=account_name,
                             calendar_url=calendar["url"],
                             calendar_name=calendar["name"],
                             calendar_color=calendar["color"],
                             event_count=calendar["event_count"],
                         )
-                        # TODO update
                 except Exception as error:
                     error.account = account_name
                     errors.append(error)

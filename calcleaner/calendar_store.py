@@ -102,6 +102,29 @@ class CalendarStore(object):
 
         return result
 
+    def find_calendar_by_url(self, url):
+        """Find the calendar with the given URL and returns its iter_.
+
+        :param str url: The calendar URL.
+
+        :rtype: Gtk.TreeIter,None
+        :returns: The TreeIter of the calendar or ``None`` if not found.
+
+        >>> store = CalendarStore()
+        >>> store.append(calendar_url="http://foo.bar/baz")
+        <Gtk.TreeIter object ...>
+        >>> store.find_calendar_by_url("http://foo.bar/baz")
+        <Gtk.TreeIter object ...>
+        >>> store.find_calendar_by_url("http://example.org/")
+        None
+        """
+        for i in range(self.length):
+            calendar = self.get(i)
+            if calendar["calendar_url"] == url:
+                iter_ = self.gtk_list_store.get_iter(i)
+                return iter_
+        return None
+
     def update(self, index_or_iter, **kwargs):
         """Updates a row.
 
