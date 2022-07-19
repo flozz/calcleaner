@@ -128,7 +128,6 @@ class CalendarStore(object):
         >>> store.find_calendar_by_url("http://foo.bar/baz")
         <Gtk.TreeIter object ...>
         >>> store.find_calendar_by_url("http://example.org/")
-        None
         """
         for i in range(self.length):
             calendar = self.get(i)
