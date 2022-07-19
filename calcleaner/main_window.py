@@ -40,7 +40,6 @@ class MainWindow(Gtk.ApplicationWindow):
             )
         )
 
-        self._calendar_liststore = None
         self._column_checkbox = None
         self._column_progress = None
         self._initialize_treeview()
@@ -72,9 +71,6 @@ class MainWindow(Gtk.ApplicationWindow):
         self._column_checkbox.set_visible(state == self.STATE_CALENDAR_LIST)
         self._column_progress.set_visible(state == self.STATE_CLEANING)
 
-        if state == self.STATE_CALENDAR_LIST:
-            self._update_treeview()
-
     def set_error(self, title="", description="", detail=""):
         title_label = self._builder.get_object("error-title-label")
         description_label = self._builder.get_object("error-description-label")
@@ -88,28 +84,21 @@ class MainWindow(Gtk.ApplicationWindow):
         more_expander.set_visible(bool(detail))
 
     def _initialize_treeview(self):
+        app = self.get_application()
         calendar_treeview = self._builder.get_object("calendar-treeview")
-
-        self._calendar_liststore = Gtk.ListStore(
-            bool,  # Checked
-            str,  # Color
-            str,  # Account Name
-            str,  # Calendar Name
-            int,  # Event count
-            int,  # Progress
-        )
-        calendar_treeview.set_model(self._calendar_liststore)
+        calendar_treeview.set_model(app.calendar_store.gtk_list_store)
 
         # TODO
-        def _toggle(widget, liststor_path):
-            iter_ = self._calendar_liststore.get_iter(liststor_path)
-            value = self._calendar_liststore.get_value(iter_, 0)
-            self._calendar_liststore.set_value(iter_, 0, not value)
+        def _toggle(widget, index):
+            calendar = app.calendar_store.get(index)
+            app.calendar_store.update(index, clean_enabled=not calendar["clean_enabled"])
 
-        column = Gtk.TreeViewColumn(cell_renderer=Gtk.CellRendererText(), markup=1)
+        # Color
+        column = Gtk.TreeViewColumn(cell_renderer=Gtk.CellRendererText(), markup=app.calendar_store.FIELDS["calendar_color"]["id"])
         column.set_expand(False)
         calendar_treeview.append_column(column)
 
+        # Caldendar Name | Account Name
         column = Gtk.TreeViewColumn("Calendar")
         column.set_expand(True)
         calendar_name_renderer = Gtk.CellRendererText(weight=700)
@@ -117,50 +106,36 @@ class MainWindow(Gtk.ApplicationWindow):
         column.pack_start(calendar_name_renderer, True)
         column.pack_start(account_name_renderer, True)
         column.get_area().set_orientation(Gtk.Orientation.VERTICAL)
-        column.add_attribute(calendar_name_renderer, "markup", 3)
-        column.add_attribute(account_name_renderer, "text", 2)
+        column.add_attribute(calendar_name_renderer, "markup", app.calendar_store.FIELDS["calendar_name"]["id"])
+        column.add_attribute(account_name_renderer, "text", app.calendar_store.FIELDS["account_name"]["id"])
         calendar_treeview.append_column(column)
 
+        # Event Count
         column = Gtk.TreeViewColumn(
             "Events",
             cell_renderer=Gtk.CellRendererText(),
-            text=4,
+            text=app.calendar_store.FIELDS["event_count"]["id"],
         )
         column.set_expand(True)
         calendar_treeview.append_column(column)
 
+        # Clean Enabled
         renderer = Gtk.CellRendererToggle()
         renderer.connect("toggled", _toggle)
         self._column_checkbox = Gtk.TreeViewColumn(
             "Purge",
             cell_renderer=renderer,
-            active=0,
+            active=app.calendar_store.FIELDS["clean_enabled"]["id"],
         )
         self._column_checkbox.set_expand(False)
         calendar_treeview.append_column(self._column_checkbox)
 
+        # Clean Progress
         self._column_progress = Gtk.TreeViewColumn(
             "Cleaning",
             cell_renderer=Gtk.CellRendererProgress(),
-            value=5,
+            value=app.calendar_store.FIELDS["clean_progress"]["id"],
             # text=4,  # TODO
         )
         self._column_progress.set_expand(True)
         calendar_treeview.append_column(self._column_progress)
-
-    def _update_treeview(self):
-        app = self.get_application()
-        self._calendar_liststore.clear()
-
-        for account_name, account in app.accounts.items():
-            for calendar in account["calendars"].values():
-                self._calendar_liststore.append(
-                    [
-                        True,
-                        '<span fgcolor="%s">⬤</span>\n' % calendar["color"],
-                        account_name,
-                        calendar["name"],
-                        calendar["event_count"],
-                        42,  # XXX
-                    ]
-                )

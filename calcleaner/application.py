@@ -11,11 +11,13 @@ from .main_window import MainWindow
 from .caldav_dialog import CaldavDialog
 from . import caldav_helpers
 from .about_dialog import AboutDialog
+from .calendar_store import CalendarStore
 
 
 class CalcleanerApplication(Gtk.Application):
 
     accounts = {}
+    calendar_store = None
 
     def __init__(self):
         Gtk.Application.__init__(
@@ -24,6 +26,7 @@ class CalcleanerApplication(Gtk.Application):
             flags=Gio.ApplicationFlags.HANDLES_OPEN,
         )
         self._main_window = None
+        self.calendar_store = CalendarStore()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -85,9 +88,6 @@ class CalcleanerApplication(Gtk.Application):
                 "url": account["url"],
                 "username": account["username"],
                 "password": account["password"],
-                "calendars": {
-                    # "url": {"name": name, "color": color, "event_count": 0}
-                },
             }
             self.fetch_calendars()
 
@@ -102,13 +102,20 @@ class CalcleanerApplication(Gtk.Application):
         def _async_fetch_calendars(accounts):
             for account_name, account in accounts.items():
                 try:
-                    self.accounts[account_name][
-                        "calendars"
-                    ] = caldav_helpers.fetch_calendars(
+                    calendars = caldav_helpers.fetch_calendars(
                         account["url"],
                         account["username"],
                         account["password"],
                     )
+                    for calendar in calendars:
+                        self.calendar_store.append(
+                            account_name=account_name,
+                            calendar_url=calendar["url"],
+                            calendar_name=calendar["name"],
+                            calendar_color=calendar["color"],
+                            event_count=calendar["event_count"],
+                        )
+                        # TODO update
                 except Exception as error:
                     error.account = account_name
                     errors.append(error)

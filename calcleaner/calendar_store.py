@@ -6,11 +6,12 @@ class CalendarStore(object):
     # fmt: off
     FIELDS = {
         "account_name":   {"id": 0, "type": str,  "default": ""},
-        "calendar_name":  {"id": 1, "type": str,  "default": ""},
-        "calendar_color": {"id": 2, "type": str,  "default": "#888888"},
-        "event_count":    {"id": 3, "type": int,  "default": 0},
-        "clean_enabled":  {"id": 4, "type": bool, "default": True},
-        "clean_progress": {"id": 5, "type": int,  "default": 0},
+        "calendar_url":   {"id": 1, "type": str,  "default": ""},
+        "calendar_name":  {"id": 2, "type": str,  "default": ""},
+        "calendar_color": {"id": 3, "type": str,  "default": "#888888"},
+        "event_count":    {"id": 4, "type": int,  "default": 0},
+        "clean_enabled":  {"id": 5, "type": bool, "default": True},
+        "clean_progress": {"id": 6, "type": int,  "default": 0},
     }
     # fmt: on
 
@@ -132,9 +133,7 @@ class CalendarStore(object):
 
         for key in kwargs:
             if key == "calendar_color":
-                color_str = (
-                    '<span fgcolor="%s">⬤</span>\n' % kwargs["calendar_color"],
-                )
+                color_str = '<span fgcolor="%s">⬤</span>\n' % kwargs["calendar_color"]
                 self._update_field(index_or_iter, key, color_str)
             else:
                 self._update_field(index_or_iter, key, kwargs[key])
