@@ -72,6 +72,34 @@ class CalcleanerApplication(Gtk.Application):
         about_dialog.run()
         about_dialog.destroy()
 
+    def display_error(self, error):
+        if hasattr(error, "account"):
+            title = error.account
+        else:
+            title = "An error occured..."
+
+        if isinstance(error, requests.exceptions.ConnectionError):
+            description = "Unable to connect to the server.\n\n"
+            description += "🞄 Check that there is no error in the CalDAV server URL\n"
+            description += "🞄 Check that the server is currently available\n"
+            description += "🞄 Check you are connected to the internet"
+        elif isinstance(error, caldav.lib.error.AuthorizationError):
+            description = "You are not authorized to access this resource.\n\n"
+            description += "🞄 Check your login and password\n"
+            description += "🞄 Check you are allowed to access the server"
+        elif isinstance(error, caldav.lib.error.PropfindError):
+            description = "Unable to read calendars.\n\n"
+            description += "🞄 Check that there is no error in the CalDAV server URL"
+        else:
+            description = "Unknown error"
+
+        self._main_window.set_error(
+            title=title,
+            description=description,
+            detail=str(error),
+        )
+        self._main_window.set_state(self._main_window.STATE_ERROR)
+
     def add_caldav(self):
         caldav_dialog = CaldavDialog(parent_window=self._main_window)
 
@@ -93,9 +121,6 @@ class CalcleanerApplication(Gtk.Application):
 
     def fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
-
-        for account in self.accounts:
-            self.accounts[account]["calendars"] = {}
 
         errors = []
 
@@ -135,40 +160,7 @@ class CalcleanerApplication(Gtk.Application):
         def _async_wait_loop():
             if future.done():
                 if errors:
-                    error = errors[0]
-
-                    if hasattr(error, "account"):
-                        title = error.account
-                    else:
-                        title = "An error occured..."
-
-                    if isinstance(error, requests.exceptions.ConnectionError):
-                        # fmt: off
-                        description = "Unable to connect to the server.\n\n"
-                        description += "🞄 Check that there is no error in the CalDAV server URL\n"
-                        description += "🞄 Check that the server is currently available\n"
-                        description += "🞄 Check you are connected to the internet"
-                        # fmt: on
-                    elif isinstance(error, caldav.lib.error.AuthorizationError):
-                        # fmt: off
-                        description = "You are not authorized to access this resource.\n\n"
-                        description += "🞄 Check your login and password\n"
-                        description += "🞄 Check you are allowed to access the server"
-                        # fmt: on
-                    elif isinstance(error, caldav.lib.error.PropfindError):
-                        # fmt: off
-                        description = "Unable to read calendars.\n\n"
-                        description += "🞄 Check that there is no error in the CalDAV server URL"
-                        # fmt: on
-                    else:
-                        description = "Unknown error"
-
-                    self._main_window.set_error(
-                        title=title,
-                        description=description,
-                        detail=str(errors[0]),
-                    )
-                    self._main_window.set_state(self._main_window.STATE_ERROR)
+                    self.display_error(errors[0])
                 else:
                     self._main_window.set_state(self._main_window.STATE_CALENDAR_LIST)
                 return
