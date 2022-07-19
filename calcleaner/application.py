@@ -108,7 +108,9 @@ class CalcleanerApplication(Gtk.Application):
                         account["password"],
                     )
                     for calendar in calendars:
-                        iter_ = self.calendar_store.find_calendar_by_url(calendar["url"])
+                        iter_ = self.calendar_store.find_calendar_by_url(
+                            calendar["url"]
+                        )
 
                         if not iter_:
                             iter_ = self.calendar_store.append()

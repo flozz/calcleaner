@@ -91,10 +91,15 @@ class MainWindow(Gtk.ApplicationWindow):
         # TODO
         def _toggle(widget, index):
             calendar = app.calendar_store.get(index)
-            app.calendar_store.update(index, clean_enabled=not calendar["clean_enabled"])
+            app.calendar_store.update(
+                index, clean_enabled=not calendar["clean_enabled"]
+            )
 
         # Color
-        column = Gtk.TreeViewColumn(cell_renderer=Gtk.CellRendererText(), markup=app.calendar_store.FIELDS["calendar_color"]["id"])
+        column = Gtk.TreeViewColumn(
+            cell_renderer=Gtk.CellRendererText(),
+            markup=app.calendar_store.FIELDS["calendar_color"]["id"],
+        )
         column.set_expand(False)
         calendar_treeview.append_column(column)
 
@@ -106,8 +111,16 @@ class MainWindow(Gtk.ApplicationWindow):
         column.pack_start(calendar_name_renderer, True)
         column.pack_start(account_name_renderer, True)
         column.get_area().set_orientation(Gtk.Orientation.VERTICAL)
-        column.add_attribute(calendar_name_renderer, "text", app.calendar_store.FIELDS["calendar_name"]["id"])
-        column.add_attribute(account_name_renderer, "text", app.calendar_store.FIELDS["account_name"]["id"])
+        column.add_attribute(
+            calendar_name_renderer,
+            "text",
+            app.calendar_store.FIELDS["calendar_name"]["id"],
+        )
+        column.add_attribute(
+            account_name_renderer,
+            "text",
+            app.calendar_store.FIELDS["account_name"]["id"],
+        )
         calendar_treeview.append_column(column)
 
         # Event Count
