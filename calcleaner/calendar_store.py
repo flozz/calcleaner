@@ -102,6 +102,18 @@ class CalendarStore(object):
 
         return result
 
+    def get_all(self):
+        """Get all rows of the store.
+
+        :rtype: generator
+
+        >>> store = CalendarStore()
+        >>> store.get_all()
+        <generator object CalendarStore.get_all at ...>
+        """
+        for i in range(self.length):
+            yield self.get(i)
+
     def find_calendar_by_url(self, url):
         """Find the calendar with the given URL and returns its iter_.
 
