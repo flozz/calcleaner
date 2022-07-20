@@ -148,7 +148,7 @@ class MainWindow(Gtk.ApplicationWindow):
             "Cleaning",
             cell_renderer=Gtk.CellRendererProgress(),
             value=app.calendar_store.FIELDS["clean_progress"]["id"],
-            # text=4,  # TODO
+            text=app.calendar_store.FIELDS["clean_progress_text"]["id"],
         )
         self._column_progress.set_expand(True)
         calendar_treeview.append_column(self._column_progress)

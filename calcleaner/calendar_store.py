@@ -5,13 +5,14 @@ class CalendarStore(object):
 
     # fmt: off
     FIELDS = {
-        "account_name":   {"id": 0, "type": str,  "default": ""},
-        "calendar_url":   {"id": 1, "type": str,  "default": ""},
-        "calendar_name":  {"id": 2, "type": str,  "default": ""},
-        "calendar_color": {"id": 3, "type": str,  "default": "#888888"},
-        "event_count":    {"id": 4, "type": int,  "default": 0},
-        "clean_enabled":  {"id": 5, "type": bool, "default": True},
-        "clean_progress": {"id": 6, "type": int,  "default": 0},
+        "account_name":        {"id": 0, "type": str,  "default": ""},
+        "calendar_url":        {"id": 1, "type": str,  "default": ""},
+        "calendar_name":       {"id": 2, "type": str,  "default": ""},
+        "calendar_color":      {"id": 3, "type": str,  "default": "#888888"},
+        "event_count":         {"id": 4, "type": int,  "default": 0},
+        "clean_enabled":       {"id": 5, "type": bool, "default": True},
+        "clean_progress":      {"id": 6, "type": int,  "default": 0},
+        "clean_progress_text": {"id": 7, "type": str,  "default": "-"},
     }
     # fmt: on
 

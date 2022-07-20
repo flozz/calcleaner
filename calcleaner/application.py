@@ -170,4 +170,56 @@ class CalcleanerApplication(Gtk.Application):
 
     def clean_calendars(self):
         self._main_window.set_state(self._main_window.STATE_CLEANING)
-        # TODO
+
+        errors = []
+
+        def _async_clean_calendars():
+            try:
+                for index in range(self.calendar_store.length):
+                    calendar = self.calendar_store.get(index)
+
+                    if not calendar["clean_enabled"]:
+                        self.calendar_store.update(
+                            index,
+                            clean_progress=0,
+                            clean_progress_text="Skipped",
+                        )
+                        continue
+
+                    self.calendar_store.update(
+                        index,
+                        clean_progress=0,
+                        clean_progress_text="Reading...",
+                    )
+
+                    for cleaned_count, to_clean_count in caldav_helpers.clean_calendar(
+                        calendar["calendar_url"],
+                        self.accounts[calendar["account_name"]]["username"],
+                        self.accounts[calendar["account_name"]]["password"],
+                        # TODO older_than_weeks
+                    ):
+                        self.calendar_store.update(
+                            index,
+                            clean_progress=cleaned_count / to_clean_count * 100,
+                            clean_progress_text="%i / %i"
+                            % (cleaned_count, to_clean_count),
+                        )
+            except Exception as error:
+                error.account = calendar["account_name"]
+                errors.append(error)
+                print(error)
+                raise error
+
+        executor = ThreadPoolExecutor(max_workers=1)
+        future = executor.submit(_async_clean_calendars)
+
+        def _async_wait_loop():
+            if future.done():
+                if errors:
+                    self.display_error(errors[0])
+                else:
+                    self.fetch_calendars()
+                return
+            GLib.timeout_add_seconds(0.1, _async_wait_loop)
+
+        _async_wait_loop()
