@@ -171,6 +171,21 @@ class CalcleanerApplication(Gtk.Application):
     def clean_calendars(self):
         self._main_window.set_state(self._main_window.STATE_CLEANING)
 
+        for index in range(self.calendar_store.length):
+            calendar = self.calendar_store.get(index)
+            if calendar["clean_enabled"]:
+                self.calendar_store.update(
+                    index,
+                    clean_progress=0,
+                    clean_progress_text="-",
+                )
+            else:
+                self.calendar_store.update(
+                    index,
+                    clean_progress=0,
+                    clean_progress_text="Skipped",
+                )
+
         errors = []
 
         def _async_clean_calendars():
@@ -179,11 +194,6 @@ class CalcleanerApplication(Gtk.Application):
                     calendar = self.calendar_store.get(index)
 
                     if not calendar["clean_enabled"]:
-                        self.calendar_store.update(
-                            index,
-                            clean_progress=0,
-                            clean_progress_text="Skipped",
-                        )
                         continue
 
                     self.calendar_store.update(
@@ -198,9 +208,14 @@ class CalcleanerApplication(Gtk.Application):
                         self.accounts[calendar["account_name"]]["password"],
                         # TODO older_than_weeks
                     ):
+                        if to_clean_count > 0:
+                            progress = cleaned_count / to_clean_count * 100
+                        else:
+                            progress = 100
+
                         self.calendar_store.update(
                             index,
-                            clean_progress=cleaned_count / to_clean_count * 100,
+                            clean_progress=progress,
                             clean_progress_text="%i / %i"
                             % (cleaned_count, to_clean_count),
                         )

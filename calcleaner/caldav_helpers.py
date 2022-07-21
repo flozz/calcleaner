@@ -40,7 +40,7 @@ def clean_calendar(url, username, password, older_than_weeks=16):
                 event.delete()
                 yield (cleaned_count, len(old_events))
         else:
-            return [(0, 0)]
+            yield (0, 0)
 
 
 def readable_account_url(url, username):
