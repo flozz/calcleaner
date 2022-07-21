@@ -54,7 +54,7 @@ class MainWindow(Gtk.ApplicationWindow):
         refresh_button = self._builder.get_object("refresh-button")
         clean_start_button = self._builder.get_object("clean-start-button")
         clean_stop_button = self._builder.get_object("clean-stop-button")
-        age_spinbutton = self._builder.get_object("age-spinbutton")
+        self.max_age_spinbutton = self._builder.get_object("max-age-spinbutton")
 
         initial_root.set_visible(state == self.STATE_INITIAL)
         updating_root.set_visible(state == self.STATE_UPDATING)
@@ -66,7 +66,7 @@ class MainWindow(Gtk.ApplicationWindow):
         refresh_button.set_visible(state == self.STATE_CALENDAR_LIST)
         clean_start_button.set_visible(state == self.STATE_CALENDAR_LIST)
         clean_stop_button.set_visible(state == self.STATE_CLEANING)
-        age_spinbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
+        self.max_age_spinbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
 
         self._column_checkbox.set_visible(state == self.STATE_CALENDAR_LIST)
         self._column_progress.set_visible(state == self.STATE_CLEANING)

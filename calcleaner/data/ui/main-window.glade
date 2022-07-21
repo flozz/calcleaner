@@ -327,7 +327,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="age-spinbutton">
+              <object class="GtkSpinButton" id="max-age-spinbutton">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="adjustment">adjustment1</property>

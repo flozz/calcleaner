@@ -171,6 +171,8 @@ class CalcleanerApplication(Gtk.Application):
     def clean_calendars(self):
         self._main_window.set_state(self._main_window.STATE_CLEANING)
 
+        max_age = int(self._main_window.max_age_spinbutton.get_value())
+
         for index in range(self.calendar_store.length):
             calendar = self.calendar_store.get(index)
             if calendar["clean_enabled"]:
@@ -206,7 +208,7 @@ class CalcleanerApplication(Gtk.Application):
                         calendar["calendar_url"],
                         self.accounts[calendar["account_name"]]["username"],
                         self.accounts[calendar["account_name"]]["password"],
-                        # TODO older_than_weeks
+                        max_age=max_age,
                     ):
                         if to_clean_count > 0:
                             progress = cleaned_count / to_clean_count * 100

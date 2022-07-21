@@ -20,9 +20,20 @@ def fetch_calendars(url, username, password):
             }
 
 
-def clean_calendar(url, username, password, older_than_weeks=16):
+def clean_calendar(url, username, password, max_age=16):
+    """Purge old events of given calendar.
+
+    :param str url: The exactu URL of the calendar to clean (not the DAV principal URL).
+    :param str username: The username of the CalDAV account.
+    :param str password: The password of the CalDAV account.
+    :param int max_age: The maximum age of events to keep (in weeks). All
+                        events older than the given age will be deleted.
+
+    :rtype: Generator<tuple>
+    :return: ``(cleaned_count, to_clean_clount)``
+    """
     start_date = datetime(year=1900, month=1, day=1)
-    end_date = datetime.now() - timedelta(weeks=older_than_weeks)
+    end_date = datetime.now() - timedelta(weeks=max_age)
 
     with DAVClient(url, username=username, password=password) as dav_client:
         dav_principal = dav_client.principal()
