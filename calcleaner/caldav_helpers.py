@@ -20,7 +20,7 @@ def fetch_calendars(url, username, password):
             }
 
 
-def clean_calendar(url, username, password, max_age=16):
+def clean_calendar(url, username, password, max_age=16, keep_recurring_events=True):
     """Purge old events of given calendar.
 
     :param str url: The exactu URL of the calendar to clean (not the DAV principal URL).
@@ -28,6 +28,7 @@ def clean_calendar(url, username, password, max_age=16):
     :param str password: The password of the CalDAV account.
     :param int max_age: The maximum age of events to keep (in weeks). All
                         events older than the given age will be deleted.
+    :param bool keep_recurring_events: If true, recurring events will be skipped.
 
     :rtype: Generator<tuple>
     :return: ``(cleaned_count, to_clean_clount)``
@@ -48,7 +49,16 @@ def clean_calendar(url, username, password, max_age=16):
             cleaned_count = 0
             for event in old_events:
                 cleaned_count += 1
-                event.delete()
+                if (
+                    hasattr(event.vobject_instance.vevent, "recurrence_id")
+                    and keep_recurring_events
+                ):
+                    print(
+                        "Skipped a recurring event: '%s'"
+                        % event.vobject_instance.vevent.summary.value
+                    )
+                else:
+                    event.delete()
                 yield (cleaned_count, len(old_events))
         else:
             yield (0, 0)

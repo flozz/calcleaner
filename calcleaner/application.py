@@ -172,6 +172,9 @@ class CalcleanerApplication(Gtk.Application):
         self._main_window.set_state(self._main_window.STATE_CLEANING)
 
         max_age = int(self._main_window.max_age_spinbutton.get_value())
+        keep_recurring_events = (
+            self._main_window.keep_recurring_checkbutton.get_active()
+        )
 
         for index in range(self.calendar_store.length):
             calendar = self.calendar_store.get(index)
@@ -209,6 +212,7 @@ class CalcleanerApplication(Gtk.Application):
                         self.accounts[calendar["account_name"]]["username"],
                         self.accounts[calendar["account_name"]]["password"],
                         max_age=max_age,
+                        keep_recurring_events=keep_recurring_events,
                     ):
                         if to_clean_count > 0:
                             progress = cleaned_count / to_clean_count * 100
