@@ -402,6 +402,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
+                <property name="action-name">app.stop-cleanning</property>
                 <style>
                   <class name="destructive-action"/>
                 </style>

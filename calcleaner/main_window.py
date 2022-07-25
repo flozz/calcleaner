@@ -23,6 +23,8 @@ class MainWindow(Gtk.ApplicationWindow):
             resizable=True,
         )
 
+        self.connect("destroy", self._on_main_window_destroyed)
+
         self._builder = Gtk.Builder()
         self._builder.add_from_file(data_helpers.find_data_path("ui/main-window.glade"))
         self._builder.connect_signals(self)
@@ -156,3 +158,7 @@ class MainWindow(Gtk.ApplicationWindow):
         )
         self._column_progress.set_expand(True)
         calendar_treeview.append_column(self._column_progress)
+
+    def _on_main_window_destroyed(self, widget):
+        app = self.get_application()
+        app.quit()

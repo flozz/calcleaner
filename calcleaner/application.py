@@ -25,6 +25,7 @@ class CalcleanerApplication(Gtk.Application):
             application_id=APPLICATION_ID,
             flags=Gio.ApplicationFlags.HANDLES_OPEN,
         )
+        self._stop_cleanning_requested = False
         self._main_window = None
         self.calendar_store = CalendarStore()
 
@@ -57,6 +58,11 @@ class CalcleanerApplication(Gtk.Application):
         self.add_action(action)
         self.set_accels_for_action("app.quit", ["<Ctrl>Q", "<Ctrl>W"])
 
+        # Action: app.stop-cleanning
+        action = Gio.SimpleAction.new("stop-cleanning", None)
+        action.connect("activate", lambda a, p: self.stop_cleanning())
+        self.add_action(action)
+
     def do_activate(self):
         if not self._main_window:
             self._main_window = MainWindow(self)
@@ -65,6 +71,7 @@ class CalcleanerApplication(Gtk.Application):
         self._main_window.present()
 
     def quit(self):
+        self.stop_cleanning()
         Gtk.Application.quit(self)
 
     def about(self):
@@ -171,6 +178,7 @@ class CalcleanerApplication(Gtk.Application):
     def clean_calendars(self):
         self._main_window.set_state(self._main_window.STATE_CLEANING)
 
+        self._stop_cleanning_requested = False
         max_age = int(self._main_window.max_age_spinbutton.get_value())
         keep_recurring_events = (
             self._main_window.keep_recurring_checkbutton.get_active()
@@ -196,6 +204,9 @@ class CalcleanerApplication(Gtk.Application):
         def _async_clean_calendars():
             try:
                 for index in range(self.calendar_store.length):
+                    if self._stop_cleanning_requested:
+                        break
+
                     calendar = self.calendar_store.get(index)
 
                     if not calendar["clean_enabled"]:
@@ -214,6 +225,8 @@ class CalcleanerApplication(Gtk.Application):
                         max_age=max_age,
                         keep_recurring_events=keep_recurring_events,
                     ):
+                        if self._stop_cleanning_requested:
+                            break
                         if to_clean_count > 0:
                             progress = cleaned_count / to_clean_count * 100
                         else:
@@ -244,3 +257,6 @@ class CalcleanerApplication(Gtk.Application):
             GLib.timeout_add_seconds(0.1, _async_wait_loop)
 
         _async_wait_loop()
+
+    def stop_cleanning(self):
+        self._stop_cleanning_requested = True
