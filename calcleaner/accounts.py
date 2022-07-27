@@ -19,7 +19,6 @@ class Accounts(object):
 
     def __init__(self):
         self._accounts = {}
-        self.load()
 
     def load(self):
         secrets = Secret.password_search_sync(
