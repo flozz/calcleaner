@@ -27,6 +27,18 @@ System::
 Hacking :)
 ----------
 
+Running the project
+~~~~~~~~~~~~~~~~~~~
+
+First, install dependencies (preferably in a virtualenv)::
+
+    pip install -e ".[dev]"
+
+Then run::
+
+    python -m calcleaner
+
+
 Codding Style / Lint
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -44,16 +56,34 @@ You can fix automatically coding style with::
 
     nox -s black_fix
 
-Running the project
-~~~~~~~~~~~~~~~~~~~
 
-First, install dependencies (preferably in a virtualenv)::
+Tests
+~~~~~
 
-    pip install -e ".[dev]"
+Tu run tests, you will first have to install `nox <https://nox.thea.codes/>`_::
 
-Then run::
+    pip3 install nox
 
-    python -m calcleaner
+Then run the following command::
+
+    nox -s test
+
+
+Regenerating Icons
+~~~~~~~~~~~~~~~~~~
+
+To regenerate icons, Inkscape must be installed. On Debian and Ubuntu you can
+install it with the following command::
+
+    sudo apt install inkscape
+
+You will also need Nox to run the generation command::
+
+    pip3 install nox
+
+Once everithing installed, you can regenerate icons with the following command::
+
+    nox -s gen_icons
 
 
 Supporting this project
