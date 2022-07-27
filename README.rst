@@ -1,6 +1,8 @@
 CalCleaner
 ==========
 
+|Github| |Discord| |Github Actions| |Black| |License|
+
     A simple graphical tool to purge old events from CalDAV calendars
 
 .. figure:: ./screenshot.png
@@ -68,3 +70,19 @@ Changelog
 ---------
 
 * Nothing yet ;)
+
+
+.. |Github| image:: https://img.shields.io/github/stars/flozz/calcleaner?label=Github&logo=github
+   :target: https://github.com/flozz/calcleaner
+
+.. |Discord| image:: https://img.shields.io/badge/chat-Discord-8c9eff?logo=discord&logoColor=ffffff
+   :target: https://discord.gg/P77sWhuSs4
+
+.. |Github Actions| image:: https://github.com/flozz/calcleaner/actions/workflows/python-ci.yml/badge.svg
+   :target: https://github.com/flozz/calcleaner/actions
+
+.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://black.readthedocs.io/en/stable/
+
+.. |License| image:: https://img.shields.io/github/license/flozz/calcleaner
+   :target: https://github.com/flozz/calcleaner/blob/master/COPYING
