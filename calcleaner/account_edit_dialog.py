@@ -16,7 +16,7 @@ class AccountEditDialog(object):
         )
         self._builder.connect_signals(self)
 
-        self._dialog = self._builder.get_object("caldav-dialog")
+        self._dialog = self._builder.get_object("account-edit-dialog")
         self._dialog.set_transient_for(parent_window)
 
         self._url_entry = self._builder.get_object("url-entry")

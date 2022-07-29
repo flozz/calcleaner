@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkDialog" id="caldav-dialog">
+  <object class="GtkDialog" id="account-edit-dialog">
     <property name="width-request">550</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">CalDAV Account</property>
