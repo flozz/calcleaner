@@ -8,7 +8,7 @@ import caldav.lib.error
 
 from . import APPLICATION_ID
 from .main_window import MainWindow
-from .caldav_dialog import CaldavDialog
+from .account_edit_dialog import AccountEditDialog
 from . import caldav_helpers
 from .about_dialog import AboutDialog
 from .calendar_store import CalendarStore
@@ -118,8 +118,8 @@ class CalcleanerApplication(Gtk.Application):
         self._main_window.set_state(self._main_window.STATE_ERROR)
 
     def add_account(self):
-        caldav_dialog = CaldavDialog(parent_window=self._main_window)
-        account = caldav_dialog.run()
+        dialog = AccountEditDialog(parent_window=self._main_window)
+        account = dialog.run()
 
         if account:
             self.accounts.add(

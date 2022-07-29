@@ -6,13 +6,13 @@ from . import data_helpers
 from . import caldav_helpers
 
 
-class CaldavDialog(object):
+class AccountEditDialog(object):
     def __init__(self, url="", username="", password="", parent_window=None):
         self._response = None
 
         self._builder = Gtk.Builder()
         self._builder.add_from_file(
-            data_helpers.find_data_path("ui/caldav-dialog.glade")
+            data_helpers.find_data_path("ui/account-edit-dialog.glade")
         )
         self._builder.connect_signals(self)
 
