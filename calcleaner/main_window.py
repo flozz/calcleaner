@@ -60,6 +60,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.keep_recurring_checkbutton = self._builder.get_object(
             "keep-recurring-checkbutton"
         )
+        accounts_modelbutton = self._builder.get_object("accounts-modelbutton")
 
         initial_root.set_visible(state == self.STATE_INITIAL)
         updating_root.set_visible(state == self.STATE_UPDATING)
@@ -73,6 +74,14 @@ class MainWindow(Gtk.ApplicationWindow):
         clean_stop_button.set_visible(state == self.STATE_CLEANING)
         self.max_age_spinbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
         self.keep_recurring_checkbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
+        accounts_modelbutton.set_sensitive(
+            state
+            in [
+                self.STATE_INITIAL,
+                self.STATE_ERROR,
+                self.STATE_CALENDAR_LIST,
+            ]
+        )
 
         self._column_checkbox.set_visible(state == self.STATE_CALENDAR_LIST)
         self._column_progress.set_visible(state == self.STATE_CLEANING)

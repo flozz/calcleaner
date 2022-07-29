@@ -61,7 +61,7 @@
             <property name="receives-default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="action-name">app.add-caldav</property>
+            <property name="action-name">app.add-account</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -252,6 +252,7 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="halign">center</property>
+                <property name="action-name">app.manage-accounts</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -441,9 +442,11 @@
         <property name="margin-bottom">6</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkModelButton">
+          <object class="GtkModelButton" id="accounts-modelbutton">
+            <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <property name="action-name">app.manage-accounts</property>
             <property name="text" translatable="yes">Accounts</property>
           </object>
           <packing>

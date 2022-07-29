@@ -35,9 +35,14 @@ class CalcleanerApplication(Gtk.Application):
         Gtk.Application.do_startup(self)
         self.accounts.load()
 
-        # Action: app.add-caldav
-        action = Gio.SimpleAction.new("add-caldav", None)
-        action.connect("activate", lambda a, p: self.add_caldav())
+        # Action: app.add-account
+        action = Gio.SimpleAction.new("add-account", None)
+        action.connect("activate", lambda a, p: self.add_account())
+        self.add_action(action)
+
+        # Action: app.manage-accounts
+        action = Gio.SimpleAction.new("manage-accounts", None)
+        action.connect("activate", lambda a, p: self.manage_accounts())
         self.add_action(action)
 
         # Action: app.refresh
@@ -112,7 +117,7 @@ class CalcleanerApplication(Gtk.Application):
         )
         self._main_window.set_state(self._main_window.STATE_ERROR)
 
-    def add_caldav(self):
+    def add_account(self):
         caldav_dialog = CaldavDialog(parent_window=self._main_window)
         account = caldav_dialog.run()
 
@@ -124,6 +129,9 @@ class CalcleanerApplication(Gtk.Application):
                 password=account["password"],
             )
             self.fetch_calendars()
+
+    def manage_accounts(self):
+        pass  # TODO
 
     def fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
