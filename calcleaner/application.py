@@ -9,6 +9,7 @@ import caldav.lib.error
 from . import APPLICATION_ID
 from .main_window import MainWindow
 from .account_edit_dialog import AccountEditDialog
+from .accounts_manage_dialog import AccountsManageDialog
 from . import caldav_helpers
 from .about_dialog import AboutDialog
 from .calendar_store import CalendarStore
@@ -131,7 +132,9 @@ class CalcleanerApplication(Gtk.Application):
             self.fetch_calendars()
 
     def manage_accounts(self):
-        pass  # TODO
+        dialog = AccountsManageDialog(self, parent_window=self._main_window)
+        dialog.run()
+        self.fetch_calendars()
 
     def fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
