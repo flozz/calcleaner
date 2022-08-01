@@ -65,7 +65,7 @@ class AccountsManageDialog(object):
         self._update_ui()
 
     def _on_add_button_clicked(self, widget):
-        self._app.add_account()
+        self._app.add_account(update=False)
         self._update_accounts()
 
     def _on_remove_button_clicked(self, widget):
@@ -73,4 +73,10 @@ class AccountsManageDialog(object):
         for iter_ in selected:
             account_name = self._account_store[iter_][0]
             self._app.accounts.remove(account_name)
+        self._update_accounts()
+
+    def _on_edit_button_clicked(self, widget):
+        selected = self.get_selected_accounts_iter()
+        account_name = self._account_store[selected[0]][0]
+        self._app.edit_account(account_name)
         self._update_accounts()

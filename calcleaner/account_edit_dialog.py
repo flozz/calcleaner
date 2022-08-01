@@ -20,12 +20,13 @@ class AccountEditDialog(object):
         self._dialog.set_transient_for(parent_window)
 
         self._url_entry = self._builder.get_object("url-entry")
-        self._url_entry.set_text(url)
         self._username_entry = self._builder.get_object("username-entry")
-        self._username_entry.set_text(username)
         self._password_entry = self._builder.get_object("password-entry")
+        self._ok_button = self._builder.get_object("ok-button")
+
+        self._url_entry.set_text(url)
+        self._username_entry.set_text(username)
         self._password_entry.set_text(password)
-        self._connect_button = self._builder.get_object("connect-button")
 
         self._validate_inputs()
 
@@ -45,7 +46,7 @@ class AccountEditDialog(object):
         if not self._password_entry.get_text():
             inputs_ok = False
 
-        self._connect_button.set_sensitive(inputs_ok)
+        self._ok_button.set_sensitive(inputs_ok)
 
     def _on_cancel(self, *args):
         self._dialog.destroy()

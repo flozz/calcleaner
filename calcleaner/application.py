@@ -118,7 +118,7 @@ class CalcleanerApplication(Gtk.Application):
         )
         self._main_window.set_state(self._main_window.STATE_ERROR)
 
-    def add_account(self):
+    def add_account(self, update=True):
         dialog = AccountEditDialog(parent_window=self._main_window)
         account = dialog.run()
 
@@ -129,7 +129,37 @@ class CalcleanerApplication(Gtk.Application):
                 username=account["username"],
                 password=account["password"],
             )
-            self.fetch_calendars()
+            if update:
+                self.fetch_calendars()
+
+    def edit_account(self, account_name):
+        orig_account = self.accounts.get(account_name)
+        dialog = AccountEditDialog(
+            url=orig_account["url"],
+            username=orig_account["username"],
+            password=orig_account["password"],
+            parent_window=self._main_window,
+        )
+        new_account = dialog.run()
+
+        if not new_account:
+            return
+
+        if new_account["name"] != account_name:
+            self.accounts.remove(account_name)
+            self.accounts.add(
+                new_account["name"],
+                url=new_account["url"],
+                username=new_account["username"],
+                password=new_account["password"],
+            )
+        else:
+            self.accounts.update(
+                account_name,
+                url=new_account["url"],
+                username=new_account["username"],
+                password=new_account["password"],
+            )
 
     def manage_accounts(self):
         dialog = AccountsManageDialog(self, parent_window=self._main_window)

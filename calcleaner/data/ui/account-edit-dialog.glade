@@ -34,8 +34,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="connect-button">
-                <property name="label">gtk-connect</property>
+              <object class="GtkButton" id="ok-button">
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
