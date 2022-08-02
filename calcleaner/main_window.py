@@ -103,13 +103,6 @@ class MainWindow(Gtk.ApplicationWindow):
         calendar_treeview = self._builder.get_object("calendar-treeview")
         calendar_treeview.set_model(app.calendar_store.gtk_list_store)
 
-        # TODO
-        def _toggle(widget, index):
-            calendar = app.calendar_store.get(index)
-            app.calendar_store.update(
-                index, clean_enabled=not calendar["clean_enabled"]
-            )
-
         # Color
         column = Gtk.TreeViewColumn(
             cell_renderer=Gtk.CellRendererText(),
@@ -149,7 +142,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Clean Enabled
         renderer = Gtk.CellRendererToggle()
-        renderer.connect("toggled", _toggle)
+        renderer.connect("toggled", self._toggle_treeview_checkbox)
         self._column_checkbox = Gtk.TreeViewColumn(
             "Purge",
             cell_renderer=renderer,
@@ -167,6 +160,11 @@ class MainWindow(Gtk.ApplicationWindow):
         )
         self._column_progress.set_expand(True)
         calendar_treeview.append_column(self._column_progress)
+
+    def _toggle_treeview_checkbox(self, widget, index):
+        app = self.get_application()
+        calendar = app.calendar_store.get(index)
+        app.calendar_store.update(index, clean_enabled=not calendar["clean_enabled"])
 
     def _on_main_window_destroyed(self, widget):
         app = self.get_application()
