@@ -1,5 +1,6 @@
 from gi.repository import Gtk
 
+from . import APPLICATION_ID
 from . import data_helpers
 
 
@@ -9,6 +10,7 @@ class AccountsManageDialog(object):
         self._account_store = Gtk.ListStore(str)
 
         self._builder = Gtk.Builder()
+        self._builder.set_translation_domain(APPLICATION_ID)
         self._builder.add_from_file(
             data_helpers.find_data_path("ui/accounts-manage-dialog.glade")
         )

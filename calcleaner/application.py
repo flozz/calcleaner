@@ -14,6 +14,7 @@ from . import caldav_helpers
 from .about_dialog import AboutDialog
 from .calendar_store import CalendarStore
 from .accounts import Accounts
+from .translation import gettext as _
 
 
 class CalcleanerApplication(Gtk.Application):
@@ -94,22 +95,28 @@ class CalcleanerApplication(Gtk.Application):
         if hasattr(error, "account"):
             title = error.account
         else:
-            title = "An error occured..."
+            title = _("An error occured...")
 
         if isinstance(error, requests.exceptions.ConnectionError):
-            description = "Unable to connect to the server.\n\n"
-            description += "🞄 Check that there is no error in the CalDAV server URL\n"
-            description += "🞄 Check that the server is currently available\n"
-            description += "🞄 Check you are connected to the internet"
+            description = _(
+                "Unable to connect to the server.\n\n"
+                "🞄 Check that there is no error in the CalDAV server URL\n"
+                "🞄 Check that the server is currently available\n"
+                "🞄 Check you are connected to the internet"
+            )
         elif isinstance(error, caldav.lib.error.AuthorizationError):
-            description = "You are not authorized to access this resource.\n\n"
-            description += "🞄 Check your login and password\n"
-            description += "🞄 Check you are allowed to access the server"
+            description = _(
+                "You are not authorized to access this resource.\n\n"
+                "🞄 Check your login and password\n"
+                "🞄 Check you are allowed to access the server"
+            )
         elif isinstance(error, caldav.lib.error.PropfindError):
-            description = "Unable to read calendars.\n\n"
-            description += "🞄 Check that there is no error in the CalDAV server URL"
+            description = _(
+                "Unable to read calendars.\n\n"
+                "🞄 Check that there is no error in the CalDAV server URL"
+            )
         else:
-            description = "Unknown error"
+            description = _("Unknown error")
 
         self._main_window.set_error(
             title=title,
@@ -237,7 +244,7 @@ class CalcleanerApplication(Gtk.Application):
                 self.calendar_store.update(
                     index,
                     clean_progress=0,
-                    clean_progress_text="Skipped",
+                    clean_progress_text=_("Skipped"),
                 )
 
         errors = []
@@ -257,7 +264,7 @@ class CalcleanerApplication(Gtk.Application):
                     self.calendar_store.update(
                         index,
                         clean_progress=0,
-                        clean_progress_text="Reading...",
+                        clean_progress_text=_("Reading..."),
                     )
 
                     for cleaned_count, to_clean_count in caldav_helpers.clean_calendar(

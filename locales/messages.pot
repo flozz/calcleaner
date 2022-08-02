@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-02 12:55+0200\n"
+"POT-Creation-Date: 2022-08-02 13:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: calcleaner/data/ui/main-window.glade:46
@@ -38,7 +38,7 @@ msgstr ""
 msgid "An error occured when fetching calendars..."
 msgstr ""
 
-#: calcleaner/data/ui/main-window.glade:218
+#: calcleaner/data/ui/main-window.glade:218 calcleaner/application.py:119
 msgid "Unknown error"
 msgstr ""
 
@@ -120,4 +120,64 @@ msgstr ""
 
 #: calcleaner/data/ui/accounts-manage-dialog.glade:146
 msgid "Edit selected account..."
+msgstr ""
+
+#: calcleaner/main_window.py:117
+msgid "Calendar"
+msgstr ""
+
+#: calcleaner/main_window.py:138
+msgid "Events"
+msgstr ""
+
+#: calcleaner/main_window.py:149
+msgid "Purge"
+msgstr ""
+
+#: calcleaner/main_window.py:158
+msgid "Cleaning"
+msgstr ""
+
+#: calcleaner/about_dialog.py:17
+msgid "A simple graphical tool to purge old events from CalDAV calendars"
+msgstr ""
+
+#: calcleaner/about_dialog.py:31
+msgid "translator-credits"
+msgstr ""
+
+#: calcleaner/application.py:98
+msgid "An error occured..."
+msgstr ""
+
+#: calcleaner/application.py:102
+msgid ""
+"Unable to connect to the server.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL\n"
+"🞄 Check that the server is currently available\n"
+"🞄 Check you are connected to the internet"
+msgstr ""
+
+#: calcleaner/application.py:109
+msgid ""
+"You are not authorized to access this resource.\n"
+"\n"
+"🞄 Check your login and password\n"
+"🞄 Check you are allowed to access the server"
+msgstr ""
+
+#: calcleaner/application.py:115
+msgid ""
+"Unable to read calendars.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL"
+msgstr ""
+
+#: calcleaner/application.py:247
+msgid "Skipped"
+msgstr ""
+
+#: calcleaner/application.py:267
+msgid "Reading..."
 msgstr ""

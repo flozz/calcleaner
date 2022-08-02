@@ -2,6 +2,7 @@ import re
 
 from gi.repository import Gtk
 
+from . import APPLICATION_ID
 from . import data_helpers
 from . import caldav_helpers
 
@@ -11,6 +12,7 @@ class AccountEditDialog(object):
         self._response = None
 
         self._builder = Gtk.Builder()
+        self._builder.set_translation_domain(APPLICATION_ID)
         self._builder.add_from_file(
             data_helpers.find_data_path("ui/account-edit-dialog.glade")
         )

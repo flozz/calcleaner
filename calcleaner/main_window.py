@@ -1,8 +1,9 @@
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
 
-from . import APPLICATION_NAME
+from . import APPLICATION_NAME, APPLICATION_ID
 from . import data_helpers
+from .translation import gettext as _
 
 
 class MainWindow(Gtk.ApplicationWindow):
@@ -26,6 +27,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.connect("destroy", self._on_main_window_destroyed)
 
         self._builder = Gtk.Builder()
+        self._builder.set_translation_domain(APPLICATION_ID)
         self._builder.add_from_file(data_helpers.find_data_path("ui/main-window.glade"))
         self._builder.connect_signals(self)
 
@@ -112,7 +114,7 @@ class MainWindow(Gtk.ApplicationWindow):
         calendar_treeview.append_column(column)
 
         # Caldendar Name | Account Name
-        column = Gtk.TreeViewColumn("Calendar")
+        column = Gtk.TreeViewColumn(_("Calendar"))
         column.set_expand(True)
         calendar_name_renderer = Gtk.CellRendererText(weight=700)
         account_name_renderer = Gtk.CellRendererText(weight=300, scale=0.75)
@@ -133,7 +135,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Event Count
         column = Gtk.TreeViewColumn(
-            "Events",
+            _("Events"),
             cell_renderer=Gtk.CellRendererText(),
             text=app.calendar_store.FIELDS["event_count"]["id"],
         )
@@ -144,7 +146,7 @@ class MainWindow(Gtk.ApplicationWindow):
         renderer = Gtk.CellRendererToggle()
         renderer.connect("toggled", self._toggle_treeview_checkbox)
         self._column_checkbox = Gtk.TreeViewColumn(
-            "Purge",
+            _("Purge"),
             cell_renderer=renderer,
             active=app.calendar_store.FIELDS["clean_enabled"]["id"],
         )
@@ -153,7 +155,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Clean Progress
         self._column_progress = Gtk.TreeViewColumn(
-            "Cleaning",
+            _("Cleaning"),
             cell_renderer=Gtk.CellRendererProgress(),
             value=app.calendar_store.FIELDS["clean_progress"]["id"],
             text=app.calendar_store.FIELDS["clean_progress_text"]["id"],
