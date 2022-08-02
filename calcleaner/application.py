@@ -268,7 +268,7 @@ class CalcleanerApplication(Gtk.Application):
                     )
 
                     for cleaned_count, to_clean_count in caldav_helpers.clean_calendar(
-                        account["url"],
+                        calendar["calendar_url"],
                         account["username"],
                         account["password"],
                         max_age=max_age,
