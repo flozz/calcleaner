@@ -110,7 +110,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
-                <property name="placeholder-text" translatable="yes">https://nextcloud.example.org/remote.php/dav</property>
+                <property name="placeholder-text">https://nextcloud.example.org/remote.php/dav</property>
                 <property name="input-purpose">url</property>
                 <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                 <signal name="changed" handler="_validate_inputs" swapped="no"/>

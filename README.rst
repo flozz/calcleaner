@@ -69,6 +69,28 @@ Then run the following command::
     nox -s test
 
 
+Extract, Update or Build Translations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You will first have to install `nox <https://nox.thea.codes/>`_::
+
+    pip3 install nox
+
+To extract messages and update locales run::
+
+    nox --session locales_update
+
+To compile locales, run::
+
+    nox --session locales_compile
+
+**NOTE:** you will need to have ``xgettext``, ``msgmerge`` and ``msgfmt``
+executable installed on your system to run the above commands. On Debian /
+Ubuntu, they can be installed with the following command::
+
+    sudo apt install gettext
+
+
 Regenerating Icons
 ~~~~~~~~~~~~~~~~~~
 
@@ -77,7 +99,8 @@ install it with the following command::
 
     sudo apt install inkscape
 
-You will also need Nox to run the generation command::
+You will also need `nox <https://nox.thea.codes/>`_ to run the generation
+command::
 
     pip3 install nox
 

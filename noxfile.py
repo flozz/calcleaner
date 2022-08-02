@@ -1,3 +1,5 @@
+import pathlib
+
 import nox
 
 
@@ -33,6 +35,57 @@ def test(session):
         "calcleaner",
         env={"LANG": "C"},  # Force using the default strings
     )
+
+
+# Requires gettext
+@nox.session
+def locales_update(session):
+    # Extract messages in .pot
+    python_files = [p.as_posix() for p in pathlib.Path("calcleaner/").glob("**/*.py")]
+    ui_files = [
+        p.as_posix() for p in pathlib.Path("calcleaner/data/ui").glob("*.glade")
+    ]
+    session.run(
+        "xgettext",
+        "--from-code=UTF-8",
+        "-o",
+        "locales/messages.pot",
+        *ui_files,
+        *python_files,
+        external=True,
+    )
+    # Updates locales
+    for po_file in pathlib.Path("locales").glob("*.po"):
+        session.run(
+            "msgmerge",
+            "--update",
+            "--no-fuzzy-matching",
+            po_file.as_posix(),
+            "locales/messages.pot",
+            external=True,
+        )
+
+
+# Requires gettext
+@nox.session
+def locales_compile(session):
+    LOCAL_DIR = pathlib.Path("calcleaner/data/locales")
+    for po_file in pathlib.Path("locales").glob("*.po"):
+        output_file = (
+            LOCAL_DIR
+            / po_file.name[: -len(po_file.suffix)]
+            / "LC_MESSAGES"
+            / "org.flozz.calcleaner.mo"
+        )
+        print(output_file.as_posix())
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        session.run(
+            "msgfmt",
+            po_file.as_posix(),
+            "-o",
+            output_file.as_posix(),
+            external=True,
+        )
 
 
 # Requires inkscape
