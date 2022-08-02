@@ -24,8 +24,61 @@ System::
     sudo apt install libgirepository1.0-dev
 
 
-Hacking :)
-----------
+Contributing / Hacking
+----------------------
+
+Questions
+~~~~~~~~~
+
+If you have any question, you can:
+
+* `open an issue <https://github.com/flozz/calcleaner/issues>`_ on Github,
+* or `ask on Discord <https://discord.gg/P77sWhuSs4>`_ (I am not always
+  available for chatting but I try to answer to everyone).
+
+
+Bugs
+~~~~
+
+If you found a bug, please `open an issue
+<https://github.com/flozz/calcleaner/issues>`_ on Github with as much
+information as possible:
+
+* What is your operating system / Linux distribution (and its version),
+* How you installed the software,
+* All the logs and message outputted by the software,
+* ...
+
+
+Pull Requests
+~~~~~~~~~~~~~
+
+Please consider `filing a bug <https://github.com/flozz/calcleaner/issues>`_
+before starting to work on a new feature. This will allow us to discuss the
+best way to do it. This is of course not necessary if you just want to fix some
+typo or small errors in the code.
+
+Please note that your code must pass tests and follow the coding style defined
+by the `pep8 <https://pep8.org/>`_. `Flake8
+<https://flake8.pycqa.org/en/latest/>`_ and `Black
+<https://black.readthedocs.io/en/stable/>`_ are used on this project to enforce
+coding style.
+
+
+Translating Calcleaner
+~~~~~~~~~~~~~~~~~~~~~~
+
+If the software is not available in your language, you can help translating it.
+
+To translate Calcleaner, you can submit your translations using a Pull Request
+on Github. Do not forget to add your name as the translation of the
+``translator-credits`` key (one name per line, e-mail is optional)::
+
+    msgid "translator-credits"
+    msgstr ""
+    "John DOE\n"
+    "Other TRANSLATOR <foobar@example.org>\n"
+
 
 Running the project
 ~~~~~~~~~~~~~~~~~~~
