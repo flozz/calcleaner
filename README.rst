@@ -8,8 +8,6 @@ CalCleaner
 .. figure:: ./screenshot.png
    :alt: Screenshot of Calcleaner
 
-**This project is currently work in progress, it is not usable yet ;)**
-
 
 Requirements
 ------------
