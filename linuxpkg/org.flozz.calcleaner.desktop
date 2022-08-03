@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Calendar Cleaner
+Name[fr]=Nettoyeur de calendrier
+Comment=Purge old events from CalDAV calendars
+Comment[fr]=Supprime les vieux événements des calendriers CalDAV
+TryExec=calcleaner
+Exec=calcleaner
+Icon=org.flozz.calcleaner
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GTK;Utility;Office
+Keywords=Calendar;Cleaner;Purge;Cleanup;CalDAV

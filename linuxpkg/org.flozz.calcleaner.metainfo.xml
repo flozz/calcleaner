@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.flozz.calcleaner</id>
+  <name>CalCleaner</name>
+  <project_license>GPL-3.0-or-later</project_license>
+  <summary>A simple graphical tool to purge old events from CalDAV calendars</summary>
+
+  <url type="homepage">https://github.com/flozz/calcleaner/</url>
+  <url type="bugtracker">https://github.com/flozz/calcleaner/issues</url>
+  <url type="contact">https://contact.flozz.fr/</url>
+  <url type="donation">https://github.com/flozz/calcleaner#supporting-this-project</url>
+
+  <categories>
+    <category>Utility</category>
+    <category>Office</category>
+  </categories>
+
+  <description>
+    <p>
+        CalCleaner is a simple utility to purge old events from CalDAV
+        calendars.
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main window</caption>
+      <image>https://raw.githubusercontent.com/flozz/calcleaner/master/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+      <!--<release version="0.0.0" date="2022-08-xx"/>-->
+  </releases>
+
+  <launchable type="desktop-id">org.flozz.calcleaner.desktop</launchable>
+  <provides>
+    <binary>calcleaner</binary>
+  </provides>
+  <metadata_license>CC0-1.0</metadata_license>
+  <content_rating type="oars-1.1" />
+</component>
