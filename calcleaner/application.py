@@ -171,7 +171,10 @@ class CalcleanerApplication(Gtk.Application):
     def manage_accounts(self):
         dialog = AccountsManageDialog(self, parent_window=self._main_window)
         dialog.run()
-        self.fetch_calendars()
+        if len(self.accounts.list()) > 0:
+            self.fetch_calendars()
+        else:
+            self._main_window.set_state(self._main_window.STATE_INITIAL)
 
     def fetch_calendars(self):
         self._main_window.set_state(self._main_window.STATE_UPDATING)
