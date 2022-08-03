@@ -173,7 +173,14 @@ Wanna support this project?
 Changelog
 ---------
 
-* Nothing yet ;)
+* **[NEXT]** (changes on ``master`` but not released yet):
+
+  * Nothing yet ;)
+
+* **v0.9.0 (beta):**
+
+  * Initial release
+  * French translation
 
 
 .. |Github| image:: https://img.shields.io/github/stars/flozz/calcleaner?label=Github&logo=github
