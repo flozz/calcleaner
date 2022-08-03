@@ -17,9 +17,48 @@ Python:
 * `PyGObject <https://pygobject.readthedocs.io/en/latest/>`_
 * `caldav <https://github.com/python-caldav/caldav>`_
 
-System::
 
-    sudo apt install libgirepository1.0-dev
+Install
+-------
+
+Linux (source)
+~~~~~~~~~~~~~~
+
+First, you will need to install some dependencies on your system. On Debian and
+Ubuntu this can be achieved with the following command::
+
+    sudo apt install git build-essential python3 python3-dev python3-pip libgirepository1.0-dev pkg-config gir1.2-gtk-3.0
+
+Then clone this repository and navigate to it::
+
+    git clone https://github.com/flozz/calcleaner.git
+    cd calcleaner
+
+Then install CalCleaner using pip::
+
+    sudo pip3 install .
+
+Finally, you can install desktop file, icons and manual using the following
+command::
+
+    sudo ./linuxpkg/copy-data.sh /usr
+
+
+Linux (PyPI)
+~~~~~~~~~~~~
+
+First, you will need to install some dependencies on your system. On Debian and
+Ubuntu this can be achieved with the following command::
+
+    sudo apt install git build-essential python3 python3-dev python3-pip libgirepository1.0-dev pkg-config gir1.2-gtk-3.0
+
+Then install CalCleaner using pip::
+
+    sudo pip3 install calcleaner
+
+**NOTE:** Installing from PyPI will not install ``.desktop`` file and man page.
+You will not be able to run the software from your graphical app menu (GNOME
+Shell,...).
 
 
 Contributing / Hacking

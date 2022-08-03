@@ -24,6 +24,7 @@ TODO: automate with Github Actions
 ::
 
     pip install wheel twine
+    nox -s locales_compile
     python3 setup.py sdist bdist_wheel
     twine upload dist/*
 
