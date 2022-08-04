@@ -216,6 +216,10 @@ Changelog
 
   * Nothing yet ;)
 
+* **v0.9.1 (beta):**
+
+  * Fix data not included in packages
+
 * **v0.9.0 (beta):**
 
   * Initial release
