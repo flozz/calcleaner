@@ -47,7 +47,7 @@ msgstr "Riprova"
 
 #: calcleaner/data/ui/main-window.glade:250
 msgid "Edit accounts..."
-msgstr "MOdifica account..."
+msgstr "Modifica account..."
 
 #: calcleaner/data/ui/main-window.glade:322
 msgid "Purge events older than"
