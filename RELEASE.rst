@@ -34,3 +34,22 @@ TODO: automate with Github Actions
 
 * Make a release on Github
 * Add changelog
+
+
+4. Publish the Flatpak package
+------------------------------
+
+Package repo: https://github.com/flathub/org.flozz.calcleaner
+
+* Update commit **tag and hash** in org.flozz.calcleaner.yml
+* Update dependencies (``./update-dependencies.sh``)
+* Test the package:
+
+  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//42``
+  * Install the runtime: ``flatpak install flathub org.gnome.Platform//42``
+  * Build/install: ``flatpak-builder --force-clean --install --user build org.flozz.calcleaner.yml``
+  * Run: ``flatpak run --user org.flozz.calcleaner``
+  * Clean ``flatpak remove --user org.flozz.calcleaner``
+
+* Publish: commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
+

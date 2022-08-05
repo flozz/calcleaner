@@ -21,6 +21,15 @@ Python:
 Install
 -------
 
+Flatpak (Linux)
+~~~~~~~~~~~~~~~
+
+A Flatpak package is available on Flathub. This is currently the simplest way
+to install CalCleaner on all major Linux distributions:
+
+* https://flathub.org/apps/details/org.flozz.calcleaner
+
+
 Linux (source)
 ~~~~~~~~~~~~~~
 
