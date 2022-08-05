@@ -10,4 +10,4 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=GTK;Utility;Office
-Keywords=Calendar;Cleaner;Purge;Cleanup;CalDAV
+Keywords=CalCleaner;Calendar;Cleaner;Purge;Cleanup;CalDAV
