@@ -223,7 +223,7 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * Nothing yet ;)
+  * Italian translation (#1, @albanobattistella) 
 
 * **v0.9.1 (beta):**
 
