@@ -28,6 +28,26 @@
       <caption>Main window</caption>
       <image>https://raw.githubusercontent.com/flozz/calcleaner/master/screenshot.png</image>
     </screenshot>
+    <screenshot>
+      <caption>First start (no account configured)</caption>
+      <image>https://calcleaner.flozz.org/images/calcleaner_first_start.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Adding first account</caption>
+      <image>https://calcleaner.flozz.org/images/calcleaner_adding_first_account.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Selection of calendar to clean</caption>
+      <image>https://calcleaner.flozz.org/images/calcleaner_calendar_selection.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Cleaning in progress</caption>
+      <image>https://calcleaner.flozz.org/images/calcleaner_cleaning_in_progress.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Account management</caption>
+      <image>https://calcleaner.flozz.org/images/calcleaner_account_management.png</image>
+    </screenshot>
   </screenshots>
 
   <releases>
