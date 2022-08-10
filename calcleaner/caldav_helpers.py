@@ -50,7 +50,8 @@ def clean_calendar(url, username, password, max_age=16, keep_recurring_events=Tr
             for event in old_events:
                 cleaned_count += 1
                 if (
-                    hasattr(event.vobject_instance.vevent, "recurrence_id")
+                    hasattr(event.vobject_instance, "vevent")
+                    and hasattr(event.vobject_instance.vevent, "recurrence_id")
                     and keep_recurring_events
                 ):
                     print(
