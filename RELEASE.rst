@@ -19,14 +19,7 @@ This file is a memo for the maintainer.
 
 Publish source dist and wheels on PyPI.
 
-TODO: automate with Github Actions
-
-::
-
-    pip install wheel twine
-    nox -s locales_compile
-    python3 setup.py sdist bdist_wheel
-    twine upload dist/*
+→ Automated with Github Actions :)
 
 
 3. Publish Github Release
