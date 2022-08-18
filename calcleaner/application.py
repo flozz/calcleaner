@@ -137,6 +137,7 @@ class CalcleanerApplication(Gtk.Application):
                 password=account["password"],
             )
             if update:
+                self.calendar_store.clear()
                 self.fetch_calendars()
 
     def edit_account(self, account_name):
@@ -172,6 +173,7 @@ class CalcleanerApplication(Gtk.Application):
         dialog = AccountsManageDialog(self, parent_window=self._main_window)
         dialog.run()
         if len(self.accounts.list()) > 0:
+            self.calendar_store.clear()
             self.fetch_calendars()
         else:
             self._main_window.set_state(self._main_window.STATE_INITIAL)

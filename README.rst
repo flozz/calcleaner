@@ -223,6 +223,8 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
+  * Fix calendar of removed account still displayed after closing account
+    management dialog
   * Fix a crash when cleaning an empty (malformed) event
   * Italian translation (#1, @albanobattistella)
 
