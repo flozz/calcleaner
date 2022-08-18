@@ -4,9 +4,15 @@ from datetime import datetime, timedelta
 from caldav import DAVClient
 from caldav.elements import ical
 
+from . import VERSION
+
+
+USER_AGENT = "CalCleaner/%s" % VERSION
+
 
 def fetch_calendars(url, username, password):
     with DAVClient(url, username=username, password=password) as dav_client:
+        dav_client.headers["User-Agent"] = USER_AGENT
         dav_principal = dav_client.principal()
         for calendar in dav_principal.calendars():
             color = calendar.get_properties([ical.CalendarColor()]).get(
@@ -37,6 +43,7 @@ def clean_calendar(url, username, password, max_age=16, keep_recurring_events=Tr
     end_date = datetime.now() - timedelta(weeks=max_age)
 
     with DAVClient(url, username=username, password=password) as dav_client:
+        dav_client.headers["User-Agent"] = USER_AGENT
         dav_principal = dav_client.principal()
         old_events = None
 
