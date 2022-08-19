@@ -31,11 +31,12 @@ class Accounts(object):
             attr = secret.get_attributes()
             self._accounts[attr["account_name"]] = {
                 "url": attr["url"],
+                "verify_cert": attr["verify_cert"] if "verify_cert" in attr else True,
                 "username": attr["username"],
                 "password": secret.retrieve_secret_sync().get_text(),
             }
 
-    def add(self, account_name, url="", username="", password=""):
+    def add(self, account_name, url="", verify_cert=True, username="", password=""):
         if not account_name or not url or not username or not password:
             raise ValueError()
 
