@@ -10,8 +10,10 @@ from . import VERSION
 USER_AGENT = "CalCleaner/%s" % VERSION
 
 
-def fetch_calendars(url, username, password):
-    with DAVClient(url, username=username, password=password) as dav_client:
+def fetch_calendars(url, username, password, verify_cert=True):
+    with DAVClient(
+        url, username=username, password=password, ssl_verify_cert=verify_cert
+    ) as dav_client:
         dav_client.headers["User-Agent"] = USER_AGENT
         dav_principal = dav_client.principal()
         for calendar in dav_principal.calendars():
@@ -26,12 +28,21 @@ def fetch_calendars(url, username, password):
             }
 
 
-def clean_calendar(url, username, password, max_age=16, keep_recurring_events=True):
+def clean_calendar(
+    url,
+    username,
+    password,
+    verify_cert=True,
+    max_age=16,
+    keep_recurring_events=True,
+):
     """Purge old events of given calendar.
 
     :param str url: The exactu URL of the calendar to clean (not the DAV principal URL).
     :param str username: The username of the CalDAV account.
     :param str password: The password of the CalDAV account.
+    :param bool verify_cert: Enable or disable SSL certificate verification (to
+                             allow self signed certificates)
     :param int max_age: The maximum age of events to keep (in weeks). All
                         events older than the given age will be deleted.
     :param bool keep_recurring_events: If true, recurring events will be skipped.
@@ -42,7 +53,9 @@ def clean_calendar(url, username, password, max_age=16, keep_recurring_events=Tr
     start_date = datetime(year=1900, month=1, day=1)
     end_date = datetime.now() - timedelta(weeks=max_age)
 
-    with DAVClient(url, username=username, password=password) as dav_client:
+    with DAVClient(
+        url, username=username, password=password, ssl_verify_cert=verify_cert
+    ) as dav_client:
         dav_client.headers["User-Agent"] = USER_AGENT
         dav_principal = dav_client.principal()
         old_events = None

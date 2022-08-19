@@ -198,6 +198,7 @@ class CalcleanerApplication(Gtk.Application):
                         account["url"],
                         account["username"],
                         account["password"],
+                        account["verify_cert"],
                     )
                     for calendar in calendars:
                         iter_ = self.calendar_store.find_calendar_by_url(
@@ -283,6 +284,7 @@ class CalcleanerApplication(Gtk.Application):
                         calendar["calendar_url"],
                         account["username"],
                         account["password"],
+                        verify_cert=account["verify_cert"],
                         max_age=max_age,
                         keep_recurring_events=keep_recurring_events,
                     ):
