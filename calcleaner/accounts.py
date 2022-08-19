@@ -9,6 +9,7 @@ _SECRET_SCHEMA = Secret.Schema.new(
     {
         "account_name": Secret.SchemaAttributeType.STRING,
         "url": Secret.SchemaAttributeType.STRING,
+        "verify_cert": Secret.SchemaAttributeType.BOOLEAN,
         "username": Secret.SchemaAttributeType.STRING,
     },
 )
@@ -29,9 +30,12 @@ class Accounts(object):
         )
         for secret in secrets:
             attr = secret.get_attributes()
+            verify_cert = True
+            if "verify_cert" in attr:
+                verify_cert = False if attr["verify_cert"] == "false" else True
             self._accounts[attr["account_name"]] = {
                 "url": attr["url"],
-                "verify_cert": attr["verify_cert"] if "verify_cert" in attr else True,
+                "verify_cert": verify_cert,
                 "username": attr["username"],
                 "password": secret.retrieve_secret_sync().get_text(),
             }
@@ -42,6 +46,7 @@ class Accounts(object):
 
         self._accounts[account_name] = {
             "url": url,
+            "verify_cert": verify_cert,
             "username": username,
             "password": password,
         }
@@ -50,6 +55,7 @@ class Accounts(object):
             {
                 "account_name": account_name,
                 "url": url,
+                "verify_cert": str(verify_cert).lower(),
                 "username": username,
             },
             Secret.COLLECTION_DEFAULT,
