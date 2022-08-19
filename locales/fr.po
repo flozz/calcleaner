@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-02 13:36+0200\n"
-"PO-Revision-Date: 2022-08-02 13:41+0200\n"
+"POT-Creation-Date: 2022-08-19 14:05+0200\n"
+"PO-Revision-Date: 2022-08-19 14:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -40,7 +40,7 @@ msgstr "Plus..."
 msgid "An error occured when fetching calendars..."
 msgstr "Une erreur est survenue lors de la récupération des calendriers..."
 
-#: calcleaner/data/ui/main-window.glade:218 calcleaner/application.py:119
+#: calcleaner/data/ui/main-window.glade:218 calcleaner/application.py:126
 msgid "Unknown error"
 msgstr "Erreur inconnue"
 
@@ -100,13 +100,18 @@ msgstr "Compte CalDAV"
 msgid "CalDAV URL"
 msgstr "URL CalDAV"
 
-#: calcleaner/data/ui/account-edit-dialog.glade:89
+#: calcleaner/data/ui/account-edit-dialog.glade:104
+msgid "Password"
+msgstr "Mot de passe"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:116
 msgid "Username"
 msgstr "Utilisateur"
 
-#: calcleaner/data/ui/account-edit-dialog.glade:101
-msgid "Password"
-msgstr "Mot de passe"
+#: calcleaner/data/ui/account-edit-dialog.glade:153
+msgid "Disable SSL certificate validation (self-signed certificate, etc.)"
+msgstr ""
+"Désactiver la vérification des certificats SSL (certificat autosigné, etc.)"
 
 #: calcleaner/data/ui/accounts-manage-dialog.glade:9
 msgid "CalDAV Accounts"
@@ -155,6 +160,21 @@ msgstr "Une erreur est survenue..."
 
 #: calcleaner/application.py:102
 msgid ""
+"Unable to connect to the server: the SSL certificate is invalid.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL\n"
+"🞄 If you are using a self-signed certificate, disable the SSL verification "
+"in the parameters of the account"
+msgstr ""
+"Impossible de se connecter au serveur : le certificat SSL n'est pas "
+"valide.\n"
+"\n"
+"🞄 Vérifiez que l'URL du serveur CalDAV ne contient pas d'erreur\n"
+"🞄 Si vous utilisez un certificat autosigné, désactivez la vérification SSL "
+"dans les paramètres du compte"
+
+#: calcleaner/application.py:109
+msgid ""
 "Unable to connect to the server.\n"
 "\n"
 "🞄 Check that there is no error in the CalDAV server URL\n"
@@ -167,7 +187,7 @@ msgstr ""
 "🞄 Vérifiez que le serveur est actuellement joignable\n"
 "🞄 Vérifiez que vous êtes connectés à internet"
 
-#: calcleaner/application.py:109
+#: calcleaner/application.py:116
 msgid ""
 "You are not authorized to access this resource.\n"
 "\n"
@@ -179,7 +199,7 @@ msgstr ""
 "🞄 Vérifiez votre nom d'utilisateur et votre mot de passe\n"
 "🞄 Vérifiez que vous êtes autorisés à accéder à ce serveur"
 
-#: calcleaner/application.py:115
+#: calcleaner/application.py:122
 msgid ""
 "Unable to read calendars.\n"
 "\n"
@@ -189,10 +209,10 @@ msgstr ""
 "\n"
 "🞄 Vérifiez que l'URL du serveur CalDAV ne contient pas d'erreur"
 
-#: calcleaner/application.py:247
+#: calcleaner/application.py:264
 msgid "Skipped"
 msgstr "Ignoré"
 
-#: calcleaner/application.py:267
+#: calcleaner/application.py:284
 msgid "Reading..."
 msgstr "Lecture..."
