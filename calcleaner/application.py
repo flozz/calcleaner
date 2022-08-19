@@ -140,6 +140,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.add(
                 account["name"],
                 url=account["url"],
+                verify_cert=account["verify_cert"],
                 username=account["username"],
                 password=account["password"],
             )
@@ -151,6 +152,7 @@ class CalcleanerApplication(Gtk.Application):
         orig_account = self.accounts.get(account_name)
         dialog = AccountEditDialog(
             url=orig_account["url"],
+            verify_cert=orig_account["verify_cert"],
             username=orig_account["username"],
             password=orig_account["password"],
             parent_window=self._main_window,
@@ -165,6 +167,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.add(
                 new_account["name"],
                 url=new_account["url"],
+                verify_cert=new_account["verify_cert"],
                 username=new_account["username"],
                 password=new_account["password"],
             )
@@ -172,6 +175,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.update(
                 account_name,
                 url=new_account["url"],
+                verify_cert=new_account["verify_cert"],
                 username=new_account["username"],
                 password=new_account["password"],
             )
