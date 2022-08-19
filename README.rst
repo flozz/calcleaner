@@ -223,6 +223,8 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
+  * Allow to disable SSL certificate validation (self-signed certificate, etc.)
+  * Improve error message on SSL errors
   * Set the user agent string to "CalCleaner/<VERSION>"
   * Fix calendar of removed account still displayed after closing account
     management dialog
