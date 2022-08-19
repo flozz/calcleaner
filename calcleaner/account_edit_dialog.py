@@ -8,7 +8,14 @@ from . import caldav_helpers
 
 
 class AccountEditDialog(object):
-    def __init__(self, url="", username="", password="", parent_window=None):
+    def __init__(
+        self,
+        url="",
+        verify_cert=True,
+        username="",
+        password="",
+        parent_window=None,
+    ):
         self._response = None
 
         self._builder = Gtk.Builder()
@@ -22,11 +29,15 @@ class AccountEditDialog(object):
         self._dialog.set_transient_for(parent_window)
 
         self._url_entry = self._builder.get_object("url-entry")
+        self._disable_verify_cert_checkbutton = self._builder.get_object(
+            "disable-verify-cert-checkbutton"
+        )
         self._username_entry = self._builder.get_object("username-entry")
         self._password_entry = self._builder.get_object("password-entry")
         self._ok_button = self._builder.get_object("ok-button")
 
         self._url_entry.set_text(url)
+        self._disable_verify_cert_checkbutton.set_active(not verify_cert)
         self._username_entry.set_text(username)
         self._password_entry.set_text(password)
 
@@ -60,6 +71,7 @@ class AccountEditDialog(object):
                 self._username_entry.get_text(),
             ),
             "url": self._url_entry.get_text(),
+            "verify_cert": not self._disable_verify_cert_checkbutton.get_active(),
             "username": self._username_entry.get_text(),
             "password": self._password_entry.get_text(),
         }

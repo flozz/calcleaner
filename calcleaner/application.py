@@ -97,7 +97,14 @@ class CalcleanerApplication(Gtk.Application):
         else:
             title = _("An error occured...")
 
-        if isinstance(error, requests.exceptions.ConnectionError):
+        if isinstance(error, requests.exceptions.SSLError):
+            description = _(
+                "Unable to connect to the server: the SSL certificate is invalid.\n\n"
+                "🞄 Check that there is no error in the CalDAV server URL\n"
+                "🞄 If you are using a self-signed certificate, disable the SSL "
+                "verification in the parameters of the account"
+            )
+        elif isinstance(error, requests.exceptions.ConnectionError):
             description = _(
                 "Unable to connect to the server.\n\n"
                 "🞄 Check that there is no error in the CalDAV server URL\n"
@@ -133,6 +140,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.add(
                 account["name"],
                 url=account["url"],
+                verify_cert=account["verify_cert"],
                 username=account["username"],
                 password=account["password"],
             )
@@ -144,6 +152,7 @@ class CalcleanerApplication(Gtk.Application):
         orig_account = self.accounts.get(account_name)
         dialog = AccountEditDialog(
             url=orig_account["url"],
+            verify_cert=orig_account["verify_cert"],
             username=orig_account["username"],
             password=orig_account["password"],
             parent_window=self._main_window,
@@ -158,6 +167,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.add(
                 new_account["name"],
                 url=new_account["url"],
+                verify_cert=new_account["verify_cert"],
                 username=new_account["username"],
                 password=new_account["password"],
             )
@@ -165,6 +175,7 @@ class CalcleanerApplication(Gtk.Application):
             self.accounts.update(
                 account_name,
                 url=new_account["url"],
+                verify_cert=new_account["verify_cert"],
                 username=new_account["username"],
                 password=new_account["password"],
             )
@@ -191,6 +202,7 @@ class CalcleanerApplication(Gtk.Application):
                         account["url"],
                         account["username"],
                         account["password"],
+                        account["verify_cert"],
                     )
                     for calendar in calendars:
                         iter_ = self.calendar_store.find_calendar_by_url(
@@ -276,6 +288,7 @@ class CalcleanerApplication(Gtk.Application):
                         calendar["calendar_url"],
                         account["username"],
                         account["password"],
+                        verify_cert=account["verify_cert"],
                         max_age=max_age,
                         keep_recurring_events=keep_recurring_events,
                     ):
