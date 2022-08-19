@@ -97,7 +97,14 @@ class CalcleanerApplication(Gtk.Application):
         else:
             title = _("An error occured...")
 
-        if isinstance(error, requests.exceptions.ConnectionError):
+        if isinstance(error, requests.exceptions.SSLError):
+            description = _(
+                "Unable to connect to the server: the SSL certificate is invalid.\n\n"
+                "🞄 Check that there is no error in the CalDAV server URL\n"
+                "🞄 If you are using a self-signed certificate, disable the SSL "
+                "verification in the parameters of the account"
+            )
+        elif isinstance(error, requests.exceptions.ConnectionError):
             description = _(
                 "Unable to connect to the server.\n\n"
                 "🞄 Check that there is no error in the CalDAV server URL\n"
