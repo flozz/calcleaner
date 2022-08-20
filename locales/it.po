@@ -5,16 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 14:05+0200\n"
-"PO-Revision-Date: 2022-08-05 14:45+0200\n"
+"PO-Revision-Date: 2022-08-19 15:40+0200\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: calcleaner/data/ui/main-window.glade:46
 msgid ""
@@ -110,6 +111,7 @@ msgstr "Nome utente"
 #: calcleaner/data/ui/account-edit-dialog.glade:153
 msgid "Disable SSL certificate validation (self-signed certificate, etc.)"
 msgstr ""
+"Disabilita la convalida del certificato SSL (certificato autofirmato, ecc.)"
 
 #: calcleaner/data/ui/accounts-manage-dialog.glade:9
 msgid "CalDAV Accounts"
@@ -165,6 +167,11 @@ msgid ""
 "🞄 If you are using a self-signed certificate, disable the SSL verification "
 "in the parameters of the account"
 msgstr ""
+"Impossibile connettersi al server: il certificato SSL non è valido.\n"
+"\n"
+"🞄 Verifica che non ci siano errori nell'URL del server CalDAV\n"
+"🞄 Se stai utilizzando un certificato autofirmato, disabilita la verifica "
+"SSL nei parametri dell'account"
 
 #: calcleaner/application.py:109
 msgid ""
