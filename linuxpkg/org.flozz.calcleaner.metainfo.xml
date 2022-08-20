@@ -1,64 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.flozz.calcleaner</id>
-  <name>CalCleaner</name>
-  <summary>A simple graphical tool to purge old events from CalDAV calendars</summary>
-  <project_license>GPL-3.0-or-later</project_license>
-  <developer_name>Fabien LOISON</developer_name>
+    <id>org.flozz.calcleaner</id>
+    <name>CalCleaner</name>
+    <summary>A simple graphical tool to purge old events from CalDAV calendars</summary>
+    <project_license>GPL-3.0-or-later</project_license>
+    <developer_name>Fabien LOISON</developer_name>
 
-  <url type="homepage">https://calcleaner.flozz.org/</url>
-  <url type="bugtracker">https://github.com/flozz/calcleaner/issues</url>
-  <url type="contact">https://contact.flozz.fr/</url>
-  <url type="donation">https://github.com/flozz/calcleaner#supporting-this-project</url>
+    <url type="homepage">https://calcleaner.flozz.org/</url>
+    <url type="bugtracker">https://github.com/flozz/calcleaner/issues</url>
+    <url type="contact">https://contact.flozz.fr/</url>
+    <url type="donation">https://github.com/flozz/calcleaner#supporting-this-project</url>
 
-  <categories>
-    <category>Utility</category>
-    <category>Office</category>
-  </categories>
+    <categories>
+        <category>Utility</category>
+        <category>Office</category>
+    </categories>
 
-  <description>
-    <p>
-        CalCleaner is a simple utility to purge old events from CalDAV
-        calendars.
-    </p>
-  </description>
+    <description>
+        <p>
+            CalCleaner is a simple utility to purge old events from CalDAV calendars.
+        </p>
+        <p>
+            Connect one or multiple CalDAV accounts (Nextcloud, Google Calendar, iCloud,...),
+            select which calendars to clean, define the max age of events you want
+            to keep and hit the "Clean Now!" button to let CalCleaner purge old
+            events from your calendars. 🗓️🧹️
+        </p>
+    </description>
 
-  <screenshots>
-    <screenshot type="default">
-      <caption>Main window</caption>
-      <image>https://raw.githubusercontent.com/flozz/calcleaner/master/screenshot.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>First start (no account configured)</caption>
-      <image>https://calcleaner.flozz.org/images/calcleaner_first_start.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Adding first account</caption>
-      <image>https://calcleaner.flozz.org/images/calcleaner_adding_first_account.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Selection of calendar to clean</caption>
-      <image>https://calcleaner.flozz.org/images/calcleaner_calendar_selection.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Cleaning in progress</caption>
-      <image>https://calcleaner.flozz.org/images/calcleaner_cleaning_in_progress.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Account management</caption>
-      <image>https://calcleaner.flozz.org/images/calcleaner_account_management.png</image>
-    </screenshot>
-  </screenshots>
+    <screenshots>
+        <screenshot type="default">
+            <caption>Main window</caption>
+            <image>https://raw.githubusercontent.com/flozz/calcleaner/master/screenshot.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>First start (no account configured)</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_first_start.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Adding first account</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_adding_first_account.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Selection of calendar to clean</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_calendar_selection.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Cleaning in progress</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_cleaning_in_progress.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Main menu</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_main_menu.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Account management</caption>
+            <image>https://calcleaner.flozz.org/images/calcleaner_account_management.png</image>
+        </screenshot>
+    </screenshots>
 
-  <releases>
-      <release version="0.9.1" date="2022-08-04"/>
-      <release version="0.9.0" date="2022-08-03"/>
-  </releases>
+    <releases>
+        <release version="0.9.1" date="2022-08-04" />
+        <release version="0.9.0" date="2022-08-03" />
+    </releases>
 
-  <launchable type="desktop-id">org.flozz.calcleaner.desktop</launchable>
-  <provides>
-    <binary>calcleaner</binary>
-  </provides>
-  <metadata_license>CC0-1.0</metadata_license>
-  <content_rating type="oars-1.1" />
+    <launchable type="desktop-id">org.flozz.calcleaner.desktop</launchable>
+    <provides>
+        <binary>calcleaner</binary>
+    </provides>
+    <metadata_license>CC0-1.0</metadata_license>
+    <content_rating type="oars-1.1" />
 </component>
