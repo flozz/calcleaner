@@ -223,6 +223,10 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
+  * Nothing yet :)
+
+* **v1.0.0:**
+
   * Allow to disable SSL certificate validation (self-signed certificate, etc.)
   * Improve error message on SSL errors
   * Set the user agent string to "CalCleaner/<VERSION>"

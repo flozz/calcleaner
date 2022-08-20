@@ -9,7 +9,7 @@ This file is a memo for the maintainer.
 
 * Update version number in ``setup.py``
 * Update version number in ``calcleaner/__init__.py``
-* Update version number in ``linuxpkg/org.flozz.calcleaner.metainfo``
+* Add release in ``linuxpkg/org.flozz.calcleaner.metainfo.xml``
 * Edit / update changelog in ``README.rst``
 * Commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
 

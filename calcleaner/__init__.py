@@ -5,4 +5,4 @@ gi.require_version("Secret", "1")
 
 APPLICATION_ID = "org.flozz.calcleaner"
 APPLICATION_NAME = "Calendar Cleaner"
-VERSION = "0.9.1"
+VERSION = "1.0.0"
