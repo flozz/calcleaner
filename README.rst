@@ -223,7 +223,7 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * Nothing yet :)
+  * Dutch translation (#5, @Vistaus)
 
 * **v1.0.0:**
 
