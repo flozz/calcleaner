@@ -116,9 +116,15 @@ Translating Calcleaner
 
 If the software is not available in your language, you can help translating it.
 
-To translate Calcleaner, you can submit your translations using a Pull Request
-on Github. Do not forget to add your name as the translation of the
-``translator-credits`` key (one name per line, e-mail is optional)::
+To translate Calcleaner, you can:
+
+* submit your translations using a Pull Request on Github,
+* or translate online using POEditor:
+
+  * → https://poeditor.com/join/project/He30lKMTwO
+
+Do not forget to add your name as the translation of the ``translator-credits``
+key (one name per line, e-mail is optional)::
 
     msgid "translator-credits"
     msgstr ""
