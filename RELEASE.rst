@@ -8,6 +8,7 @@ This file is a memo for the maintainer.
 ---------
 
 * Check Copyright years in the About dialog
+* Update screenshots
 * Check screenshot links in ``linuxpkg/org.flozz.yoga-image-optimizer.metainfo.xml``
 
 

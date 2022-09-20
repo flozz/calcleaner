@@ -230,6 +230,7 @@ Changelog
 * **[NEXT]** (changes on ``master`` but not released yet):
 
   * Dutch translation (#5, @Vistaus)
+  * Brazilian Portuguese translation (partial)
 
 * **v1.0.0:**
 
