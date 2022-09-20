@@ -300,6 +300,9 @@
                 </child>
               </object>
             </child>
+            <style>
+              <class name="calcleaner-scrolledwindow"/>
+            </style>
           </object>
           <packing>
             <property name="expand">True</property>

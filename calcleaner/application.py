@@ -15,6 +15,8 @@ from .about_dialog import AboutDialog
 from .calendar_store import CalendarStore
 from .accounts import Accounts
 from .translation import gettext as _
+from .helpers import load_gtk_custom_css
+from .data_helpers import find_data_path
 
 
 class CalcleanerApplication(Gtk.Application):
@@ -36,6 +38,8 @@ class CalcleanerApplication(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
         self.accounts.load()
+
+        load_gtk_custom_css(find_data_path("style/calcleaner.css"))
 
         # Action: app.add-account
         action = Gio.SimpleAction.new("add-account", None)
