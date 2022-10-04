@@ -9,11 +9,11 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
-  <object class="GtkBox" id="main-window-content">
+  <object class="GtkNotebook" id="main-window-content">
     <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="orientation">vertical</property>
-    <property name="spacing">6</property>
+    <property name="can-focus">True</property>
+    <property name="show-tabs">False</property>
+    <property name="show-border">False</property>
     <child>
       <object class="GtkBox" id="state-initial">
         <property name="visible">True</property>
@@ -70,10 +70,15 @@
           </packing>
         </child>
       </object>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label">Initial Setup</property>
+      </object>
       <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
+        <property name="tab-fill">False</property>
       </packing>
     </child>
     <child>
@@ -113,9 +118,18 @@
         </child>
       </object>
       <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
         <property name="position">1</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label">Updating</property>
+      </object>
+      <packing>
+        <property name="position">1</property>
+        <property name="tab-fill">False</property>
       </packing>
     </child>
     <child>
@@ -271,9 +285,18 @@
         </child>
       </object>
       <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
         <property name="position">2</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label">Error</property>
+      </object>
+      <packing>
+        <property name="position">2</property>
+        <property name="tab-fill">False</property>
       </packing>
     </child>
     <child>
@@ -295,9 +318,6 @@
                 <property name="can-focus">False</property>
                 <property name="enable-search">False</property>
                 <property name="enable-grid-lines">horizontal</property>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection"/>
-                </child>
               </object>
             </child>
             <style>
@@ -426,9 +446,18 @@
         </child>
       </object>
       <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
         <property name="position">3</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">Calendar Selection</property>
+      </object>
+      <packing>
+        <property name="position">3</property>
+        <property name="tab-fill">False</property>
       </packing>
     </child>
   </object>

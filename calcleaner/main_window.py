@@ -48,45 +48,52 @@ class MainWindow(Gtk.ApplicationWindow):
         self._column_progress = None
         self._initialize_treeview()
 
-        self.set_state(self.STATE_INITIAL)
-
-    def set_state(self, state):
-        initial_root = self._builder.get_object("state-initial")
-        updating_root = self._builder.get_object("state-updating")
-        error_root = self._builder.get_object("state-error")
-        calendar_list_root = self._builder.get_object("state-calendar-list")
-        refresh_button = self._builder.get_object("refresh-button")
-        clean_start_button = self._builder.get_object("clean-start-button")
-        clean_stop_button = self._builder.get_object("clean-stop-button")
         self.max_age_spinbutton = self._builder.get_object("max-age-spinbutton")
         self.keep_recurring_checkbutton = self._builder.get_object(
             "keep-recurring-checkbutton"
         )
+
+        self.set_state(self.STATE_INITIAL)
+
+    def set_state(self, state):
+        notebook = self._builder.get_object("main-window-content")
+        refresh_button = self._builder.get_object("refresh-button")
         accounts_modelbutton = self._builder.get_object("accounts-modelbutton")
+        clean_start_button = self._builder.get_object("clean-start-button")
+        clean_stop_button = self._builder.get_object("clean-stop-button")
 
-        initial_root.set_visible(state == self.STATE_INITIAL)
-        updating_root.set_visible(state == self.STATE_UPDATING)
-        error_root.set_visible(state == self.STATE_ERROR)
-        calendar_list_root.set_visible(
-            state in [self.STATE_CALENDAR_LIST, self.STATE_CLEANING]
-        )
-
-        refresh_button.set_visible(state == self.STATE_CALENDAR_LIST)
-        clean_start_button.set_visible(state == self.STATE_CALENDAR_LIST)
-        clean_stop_button.set_visible(state == self.STATE_CLEANING)
-        self.max_age_spinbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
-        self.keep_recurring_checkbutton.set_sensitive(state == self.STATE_CALENDAR_LIST)
-        accounts_modelbutton.set_sensitive(
-            state
-            in [
-                self.STATE_INITIAL,
-                self.STATE_ERROR,
-                self.STATE_CALENDAR_LIST,
-            ]
-        )
-
-        self._column_checkbox.set_visible(state == self.STATE_CALENDAR_LIST)
-        self._column_progress.set_visible(state == self.STATE_CLEANING)
+        if state == self.STATE_INITIAL:
+            notebook.set_current_page(0)
+            refresh_button.set_visible(False)
+            accounts_modelbutton.set_sensitive(True)
+        elif state == self.STATE_UPDATING:
+            notebook.set_current_page(1)
+            refresh_button.set_visible(False)
+            accounts_modelbutton.set_sensitive(False)
+        elif state == self.STATE_ERROR:
+            notebook.set_current_page(2)
+            refresh_button.set_visible(False)
+            accounts_modelbutton.set_sensitive(True)
+        elif state == self.STATE_CALENDAR_LIST:
+            notebook.set_current_page(3)
+            refresh_button.set_visible(True)
+            accounts_modelbutton.set_sensitive(True)
+            self.max_age_spinbutton.set_sensitive(True)
+            self.keep_recurring_checkbutton.set_sensitive(True)
+            clean_start_button.set_visible(True)
+            clean_stop_button.set_visible(False)
+            self._column_checkbox.set_visible(True)
+            self._column_progress.set_visible(False)
+        elif state == self.STATE_CLEANING:
+            notebook.set_current_page(3)
+            refresh_button.set_visible(False)
+            accounts_modelbutton.set_sensitive(False)
+            self.max_age_spinbutton.set_sensitive(False)
+            self.keep_recurring_checkbutton.set_sensitive(False)
+            clean_start_button.set_visible(False)
+            clean_stop_button.set_visible(True)
+            self._column_checkbox.set_visible(False)
+            self._column_progress.set_visible(True)
 
     def set_error(self, title="", description="", detail=""):
         title_label = self._builder.get_object("error-title-label")
