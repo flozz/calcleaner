@@ -17,8 +17,8 @@ This file is a memo for the maintainer.
 
 * Update version number in ``setup.py``
 * Update version number in ``calcleaner/__init__.py``
-* Add release in ``linuxpkg/org.flozz.calcleaner.metainfo.xml``
 * Edit / update changelog in ``README.rst``
+* Add release in ``linuxpkg/org.flozz.calcleaner.metainfo.xml``
 * Commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
 
 
@@ -46,8 +46,8 @@ Package repo: https://github.com/flathub/org.flozz.calcleaner
 * Update dependencies (``./update-dependencies.sh``)
 * Test the package:
 
-  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//42``
-  * Install the runtime: ``flatpak install flathub org.gnome.Platform//42``
+  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//43``
+  * Install the runtime: ``flatpak install flathub org.gnome.Platform//43``
   * Build/install: ``flatpak-builder --force-clean --install --user build org.flozz.calcleaner.yml``
   * Run: ``flatpak run --user org.flozz.calcleaner``
   * Clean ``flatpak remove --user org.flozz.calcleaner``
