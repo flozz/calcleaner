@@ -241,8 +241,8 @@ Changelog
 
   * Translations:
 
-      * Dutch (#5, @Vistaus)
-      * Brazilian Portuguese (incomplete)
+    * Dutch (#5, @Vistaus)
+    * Brazilian Portuguese (incomplete)
 
 * **v1.0.0:**
 
