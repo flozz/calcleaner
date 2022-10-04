@@ -229,8 +229,20 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * Dutch translation (#5, @Vistaus)
-  * Brazilian Portuguese translation (partial)
+  * Nothing yet :)
+
+* **v1.1.0:**
+
+  * UI improvements:
+
+    * Double border removed in calendar view
+    * Accessibility improved by changing the widgets used to build the "pages"
+      of the main window
+
+  * Translations:
+
+      * Dutch (#5, @Vistaus)
+      * Brazilian Portuguese (incomplete)
 
 * **v1.0.0:**
 
