@@ -114,7 +114,7 @@ coding style.
 Translating Calcleaner
 ~~~~~~~~~~~~~~~~~~~~~~
 
-If the software is not available in your language, you can help translating it.
+If the software is not available in your language, you can help translate it.
 
 To translate Calcleaner, you can:
 
