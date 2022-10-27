@@ -15,6 +15,10 @@
         <category>Utility</category>
         <category>Office</category>
     </categories>
+    <launchable type="desktop-id">org.flozz.calcleaner.desktop</launchable>
+    <provides>
+        <binary>calcleaner</binary>
+    </provides>
 
     <description>
         <p>
@@ -60,12 +64,21 @@
     </screenshots>
 
     <releases>
+        <release version="1.1.1" date="2022-10-27">
+            <description>
+                <ul>
+                    <li>Added German translation (Jürgen Benvenuti)</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="1.1.0" date="2022-10-04">
             <description>
                 <p>UI Improvements:</p>
                 <ul>
                     <li>Double border removed in calendar view</li>
-                    <li>Accessibility improved by changing the widgets used to build the "pages" of the main window</li>
+                    <li>Accessibility improved by changing the widgets used to build
+                        the "pages" of the main window</li>
                 </ul>
                 <p>Translations:</p>
                 <ul>
@@ -74,15 +87,13 @@
                 </ul>
             </description>
         </release>
+
         <release version="1.0.0" date="2022-08-20" />
         <release version="0.9.1" date="2022-08-04" />
         <release version="0.9.0" date="2022-08-03" />
     </releases>
 
-    <launchable type="desktop-id">org.flozz.calcleaner.desktop</launchable>
-    <provides>
-        <binary>calcleaner</binary>
-    </provides>
     <metadata_license>CC0-1.0</metadata_license>
     <content_rating type="oars-1.1" />
+
 </component>

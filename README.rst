@@ -229,7 +229,11 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * German translation (Jürgen Benvenuti)
+  * Nothing yet :)
+
+* **v1.1.1:**
+
+  * Added German translation (Jürgen Benvenuti)
 
 * **v1.1.0:**
 

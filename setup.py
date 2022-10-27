@@ -13,7 +13,7 @@ if os.path.isfile("README.rst"):
 
 setup(
     name="calcleaner",
-    version="1.1.0",
+    version="1.1.1",
     description="A simple graphical tool to purge old events from CalDAV calendars",
     url="https://github.com/flozz/calcleaner",
     license="GPLv3",
