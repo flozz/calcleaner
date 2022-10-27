@@ -19,6 +19,7 @@ This file is a memo for the maintainer.
 * Update version number in ``calcleaner/__init__.py``
 * Edit / update changelog in ``README.rst``
 * Add release in ``linuxpkg/org.flozz.calcleaner.metainfo.xml``
+* Check appstream file: ``appstream-util validate-relax linuxpkg/org.flozz.calcleaner.metainfo.xml``
 * Commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
 
 
@@ -52,5 +53,7 @@ Package repo: https://github.com/flathub/org.flozz.calcleaner
   * Run: ``flatpak run --user org.flozz.calcleaner``
   * Clean ``flatpak remove --user org.flozz.calcleaner``
 
-* Publish: commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
-
+* Create branch: ``git checkout -b release-vX.Y.Z && ``
+* Publish: commit / tag / push: ``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``
+* Create Pull Request
+* Merge Pull Request once tests passed
