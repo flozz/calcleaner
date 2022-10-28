@@ -229,7 +229,7 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * Nothing yet :)
+  * Added Python 3.11 support
 
 * **v1.1.1:**
 
