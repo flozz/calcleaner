@@ -20,7 +20,6 @@ from .data_helpers import find_data_path
 
 
 class CalcleanerApplication(Gtk.Application):
-
     accounts = None
     calendar_store = None
 

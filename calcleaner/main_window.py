@@ -7,7 +7,6 @@ from .translation import gettext as _
 
 
 class MainWindow(Gtk.ApplicationWindow):
-
     STATE_INITIAL = "state-initial"
     STATE_UPDATING = "state-updating"
     STATE_ERROR = "state-error"

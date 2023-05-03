@@ -2,7 +2,6 @@ from gi.repository import Gtk
 
 
 class CalendarStore(object):
-
     # fmt: off
     FIELDS = {
         "account_name":        {"id": 0, "type": str,  "default": ""},
