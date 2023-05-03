@@ -147,7 +147,7 @@ Then run::
 Coding Style / Lint
 ~~~~~~~~~~~~~~~~~~~
 
-This project follows `Black's <https://black.readthedocs.io/en/stable/>`_ codding style.
+This project follows `Black's <https://black.readthedocs.io/en/stable/>`_ coding style.
 
 To check coding style, you will first have to install `nox <https://nox.thea.codes/>`_::
 
