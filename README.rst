@@ -144,12 +144,12 @@ Then run::
     python -m calcleaner
 
 
-Codding Style / Lint
-~~~~~~~~~~~~~~~~~~~~
+Coding Style / Lint
+~~~~~~~~~~~~~~~~~~~
 
 This project follows `Black's <https://black.readthedocs.io/en/stable/>`_ codding style.
 
-To check codding style, you will first have to install `nox <https://nox.thea.codes/>`_::
+To check coding style, you will first have to install `nox <https://nox.thea.codes/>`_::
 
     pip3 install nox
 
