@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Calendar Cleaner
 Name[fr]=Nettoyeur de calendrier
+Name[hr]=Čistač kalendara
 Comment=Purge old events from CalDAV calendars
 Comment[fr]=Supprime les vieux événements des calendriers CalDAV
+Comment[hr]=Izbriši stare događaje iz CalDAV kalendara
 TryExec=calcleaner
 Exec=calcleaner
 Icon=org.flozz.calcleaner
