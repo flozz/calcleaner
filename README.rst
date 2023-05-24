@@ -230,6 +230,7 @@ Changelog
 * **[NEXT]** (changes on ``master`` but not released yet):
 
   * Added Python 3.11 support
+  * Added Croatian translation (@milotype, #7)
 
 * **v1.1.1:**
 
