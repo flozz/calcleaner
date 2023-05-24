@@ -47,13 +47,13 @@ Package repo: https://github.com/flathub/org.flozz.calcleaner
 * Update dependencies (``./update-dependencies.sh``)
 * Test the package:
 
-  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//43``
-  * Install the runtime: ``flatpak install flathub org.gnome.Platform//43``
+  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//44``
+  * Install the runtime: ``flatpak install flathub org.gnome.Platform//44``
   * Build/install: ``flatpak-builder --force-clean --install --user build org.flozz.calcleaner.yml``
   * Run: ``flatpak run --user org.flozz.calcleaner``
   * Clean ``flatpak remove --user org.flozz.calcleaner``
 
-* Create branch: ``git checkout -b release-vX.Y.Z && ``
+* Create branch: ``git checkout -b release-vX.Y.Z``
 * Publish: commit / tag / push: ``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``
 * Create Pull Request
 * Merge Pull Request once tests passed
