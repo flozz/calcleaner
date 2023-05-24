@@ -17,7 +17,7 @@ class AboutDialog(Gtk.AboutDialog):
                 "A simple graphical tool to purge old events from CalDAV calendars"
             ),
             version=VERSION,
-            copyright="Copyright (c) 2022 Fabien LOISON",
+            copyright="Copyright (c) 2022-2023 Fabien LOISON",
             website_label="github.com/flozz/calcleaner",
             website="https://github.com/flozz/calcleaner",
             license_type=Gtk.License.GPL_3_0,
