@@ -3,6 +3,7 @@
     <id>org.flozz.calcleaner</id>
     <name>CalCleaner</name>
     <summary>A simple graphical tool to purge old events from CalDAV calendars</summary>
+    <summary xml:lang="hr">Jednostavan grafički alat za brisanje starih događaja iz CalDAV kalendara</summary>
     <project_license>GPL-3.0-or-later</project_license>
     <developer_name>Fabien LOISON</developer_name>
 
@@ -29,6 +30,12 @@
             select which calendars to clean, define the max age of events you want
             to keep and hit the "Clean Now!" button to let CalCleaner purge old
             events from your calendars. 🗓️🧹️
+        </p>
+        <p xml:lang="hr">
+            Čistač kalendara (CalCleaner) je jednostavan alat za brisanje starih događaja iz CalDAV kalendara.
+        </p>
+        <p xml:lang="hr">
+            Poveži se s jednim ili više CalDAV računa (Nextcloud, Google Calendar, iCloud, …), odaberi kalendare za čišćenje, odredi željenu maksimalnu starost događaja koje želiš zadržati i pritisnuti gumb „Očisti sada!” kako bi aplikacija „Čistač kalendara” izbrisala stare događaje iz tvojih kalendara. 🗓️🧹️
         </p>
     </description>
 

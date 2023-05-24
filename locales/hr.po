@@ -1,0 +1,217 @@
+# Croatian translation for calcleaner.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Milo Ivir <mail@milotype.de>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: calcleaner\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-19 14:05+0200\n"
+"PO-Revision-Date: 2023-05-13 12:36+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: calcleaner/data/ui/main-window.glade:46
+msgid ""
+"Start by connecting to a CalDAV account to get some calendars to cleanup..."
+msgstr "Započni povezivanjem s CalDAV računom za čišćenje kalendara …"
+
+#: calcleaner/data/ui/main-window.glade:58
+msgid "Add account..."
+msgstr "Dodaj račun …"
+
+#: calcleaner/data/ui/main-window.glade:106
+msgid "Reading calendars..."
+msgstr "Čitanje kalendara …"
+
+#: calcleaner/data/ui/main-window.glade:188
+msgid "More..."
+msgstr "Više …"
+
+#: calcleaner/data/ui/main-window.glade:202
+msgid "An error occured when fetching calendars..."
+msgstr "Došlo je do greške prilikom dohvaćanja kalendara …"
+
+#: calcleaner/data/ui/main-window.glade:218 calcleaner/application.py:126
+msgid "Unknown error"
+msgstr "Nepoznata greška"
+
+#: calcleaner/data/ui/main-window.glade:236
+msgid "Retry"
+msgstr "Pokušaj ponovo"
+
+#: calcleaner/data/ui/main-window.glade:250
+msgid "Edit accounts..."
+msgstr "Uredi račune …"
+
+#: calcleaner/data/ui/main-window.glade:322
+msgid "Purge events older than"
+msgstr "Izbriši događaje starije od"
+
+#: calcleaner/data/ui/main-window.glade:346
+msgid "weeks"
+msgstr "tjedna"
+
+#: calcleaner/data/ui/main-window.glade:363
+msgid "Do not delete recurring events"
+msgstr "Nemoj brisati ponavljajuće događaje"
+
+#: calcleaner/data/ui/main-window.glade:385
+msgid "Clean Now!"
+msgstr "Očisti sada!"
+
+#: calcleaner/data/ui/main-window.glade:402
+msgid "Stop"
+msgstr "Prekini"
+
+#: calcleaner/data/ui/main-window.glade:450
+msgid "Accounts"
+msgstr "Računi"
+
+#: calcleaner/data/ui/main-window.glade:464
+msgid "About"
+msgstr "O aplikaciji"
+
+#: calcleaner/data/ui/main-window.glade:478
+msgid "Quit"
+msgstr "Zatvori aplikaciju"
+
+#: calcleaner/data/ui/main-window.glade:492
+msgid "Calendar Cleaner"
+msgstr "Čistač kalendara"
+
+#: calcleaner/data/ui/main-window.glade:499
+msgid "Refresh calendars"
+msgstr "Aktualiziraj kalendare"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:8
+msgid "CalDAV Account"
+msgstr "CalDAV račun"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:77
+msgid "CalDAV URL"
+msgstr "CalDAV URL"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:104
+msgid "Password"
+msgstr "Lozinka"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:116
+msgid "Username"
+msgstr "Korisničko ime"
+
+#: calcleaner/data/ui/account-edit-dialog.glade:153
+msgid "Disable SSL certificate validation (self-signed certificate, etc.)"
+msgstr ""
+"Deaktiviraj provjeru SSL certifikata (samopotpisani certifikat, itd.)"
+
+#: calcleaner/data/ui/accounts-manage-dialog.glade:9
+msgid "CalDAV Accounts"
+msgstr "CalDAV računi"
+
+#: calcleaner/data/ui/accounts-manage-dialog.glade:80
+msgid "Add account"
+msgstr "Dodaj račun"
+
+#: calcleaner/data/ui/accounts-manage-dialog.glade:105
+msgid "Remove selected account"
+msgstr "Ukloni odabrani račun"
+
+#: calcleaner/data/ui/accounts-manage-dialog.glade:146
+msgid "Edit selected account..."
+msgstr "Uredi odabrani račun …"
+
+#: calcleaner/main_window.py:117
+msgid "Calendar"
+msgstr "Kalendar"
+
+#: calcleaner/main_window.py:138
+msgid "Events"
+msgstr "Događaji"
+
+#: calcleaner/main_window.py:149
+msgid "Purge"
+msgstr "Izbriši"
+
+#: calcleaner/main_window.py:158
+msgid "Cleaning"
+msgstr "Čišćenje"
+
+#: calcleaner/about_dialog.py:17
+msgid "A simple graphical tool to purge old events from CalDAV calendars"
+msgstr ""
+"Jednostavan grafički alat za brisanje starih događaja iz CalDAV kalendara"
+
+#: calcleaner/about_dialog.py:31
+msgid "translator-credits"
+msgstr "Milo Ivir <mail@milotype.de>"
+
+#: calcleaner/application.py:98
+msgid "An error occured..."
+msgstr "Došlo je do greške …"
+
+#: calcleaner/application.py:102
+msgid ""
+"Unable to connect to the server: the SSL certificate is invalid.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL\n"
+"🞄 If you are using a self-signed certificate, disable the SSL verification "
+"in the parameters of the account"
+msgstr ""
+"Neuspjelo povezivanje s poslužiteljem: SSL certifikat je neispravan.\n"
+"\n"
+"🞄 Provjeri da u URL-u CalDAV poslužitelja nema greške\n"
+"🞄 Ako koristiš samopotpisani certifikat, deaktiviraj SSL provjeru u "
+"parametrima računa"
+
+#: calcleaner/application.py:109
+msgid ""
+"Unable to connect to the server.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL\n"
+"🞄 Check that the server is currently available\n"
+"🞄 Check you are connected to the internet"
+msgstr ""
+"Neuspjelo povezivanje s poslužiteljem.\n"
+"\n"
+"🞄 Provjeri da u URL-u CalDAV poslužitelja nema greške\n"
+"🞄 Provjeri dostupnost poslužitelja\n"
+"🞄 Provjeri vezu s internetom"
+
+#: calcleaner/application.py:116
+msgid ""
+"You are not authorized to access this resource.\n"
+"\n"
+"🞄 Check your login and password\n"
+"🞄 Check you are allowed to access the server"
+msgstr ""
+"Nemaš autorizaciju za pristup ovom resursu.\n"
+"\n"
+"🞄 Provjeri svoju prijavu i lozinku\n"
+"🞄 Provjeri dozvolu za pristup poslužitelju"
+
+#: calcleaner/application.py:122
+msgid ""
+"Unable to read calendars.\n"
+"\n"
+"🞄 Check that there is no error in the CalDAV server URL"
+msgstr ""
+"Neuspjelo čitanje kalendara.\n"
+"\n"
+"🞄 Provjeri da u URL-u CalDAV poslužitelja nema greške"
+
+#: calcleaner/application.py:264
+msgid "Skipped"
+msgstr "Preskočeno"
+
+#: calcleaner/application.py:284
+msgid "Reading..."
+msgstr "Učitavanje …"
