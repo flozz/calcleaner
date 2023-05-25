@@ -229,7 +229,7 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * Nothing yet ;)
+  * Added Turkish translation (@sabriunal, #8)
 
 * **v1.1.2:**
 
