@@ -225,6 +225,10 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
+  * Nothing yet ;)
+
+* **v1.1.3:**
+
   * Added Turkish translation (@sabriunal, #8)
 
 * **v1.1.2:**
