@@ -43,7 +43,7 @@ Publish source dist and wheels on PyPI.
 
 Package repo: https://github.com/flathub/org.flozz.calcleaner
 
-* Update commit **tag and hash** in org.flozz.calcleaner.yml
+* Update commit **tag and hash** in ``org.flozz.calcleaner.yml``
 * Update dependencies (``./update-dependencies.sh``)
 * Test the package:
 
