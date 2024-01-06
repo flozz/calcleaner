@@ -47,8 +47,8 @@ Package repo: https://github.com/flathub/org.flozz.calcleaner
 * Update dependencies (``./update-dependencies.sh``)
 * Test the package:
 
-  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//44``
-  * Install the runtime: ``flatpak install flathub org.gnome.Platform//44``
+  * Install the SDK: ``flatpak install flathub org.gnome.Sdk//45``
+  * Install the runtime: ``flatpak install flathub org.gnome.Platform//45``
   * Build/install: ``flatpak-builder --force-clean --install --user build org.flozz.calcleaner.yml``
   * Run: ``flatpak run --user org.flozz.calcleaner``
   * Clean ``flatpak remove --user org.flozz.calcleaner``
