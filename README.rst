@@ -225,8 +225,8 @@ Changelog
 
 * **[NEXT]** (changes on ``master`` but not released yet):
 
-  * chore: Added Python 3.12 support
-  * chore!: Removed Python 3.7 support
+  * misc: Added Python 3.12, 3.13 support (@flozz)
+  * misc!: Removed Python 3.7, 3.8 support (@flozz)
 
 * **v1.1.3:**
 
