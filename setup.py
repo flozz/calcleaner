@@ -30,7 +30,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "caldav>=0.9.1",
+        "caldav>=0.9.1,<2.0.0",
         "PyGObject>=3.26",
     ],
     extras_require={
