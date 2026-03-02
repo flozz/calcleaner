@@ -2,7 +2,6 @@ from gi.repository import Secret
 
 from . import APPLICATION_ID
 
-
 _SECRET_SCHEMA = Secret.Schema.new(
     APPLICATION_ID,
     Secret.SchemaFlags.NONE,

@@ -6,7 +6,6 @@ from caldav.elements import ical
 
 from . import VERSION
 
-
 USER_AGENT = "CalCleaner/%s" % VERSION
 
 

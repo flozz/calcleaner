@@ -2,7 +2,6 @@ import pathlib
 
 import nox
 
-
 PYTHON_FILES = [
     "calcleaner",
     "setup.py",

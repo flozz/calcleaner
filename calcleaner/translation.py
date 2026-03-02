@@ -5,7 +5,6 @@ import gettext
 from . import APPLICATION_ID
 from . import data_helpers
 
-
 if "LANG" not in os.environ:
     language, encoding = locale.getlocale()
     os.environ["LANG"] = language
