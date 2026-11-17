@@ -64,9 +64,12 @@ jobs:
       - name: "Download artifacts"
         uses: actions/download-artifact@v8
 
-      - name: "List packages"
+      - name: "List & mv packages"
         run: |
           find . -name "*.whl" -o -name "*.tar.gz"
+          mkdir -p dist/
+          mv *.tar.gz dist/
+          mv *.whl dist/
 
       - name: "Publish packages on PyPI"
         uses: pypa/gh-action-pypi-publish@release/v1
