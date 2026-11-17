@@ -26,16 +26,21 @@
             CalCleaner is a simple utility to purge old events from CalDAV calendars.
         </p>
         <p>
-            Connect one or multiple CalDAV accounts (Nextcloud, Google Calendar, iCloud,...),
-            select which calendars to clean, define the max age of events you want
-            to keep and hit the "Clean Now!" button to let CalCleaner purge old
+            Connect one or multiple CalDAV accounts (Nextcloud, OwnCloud,... do
+            not work with Google Calendar), select which calendars
+            to clean, define the max age of events you want to keep
+            and hit the "Clean Now!" button to let CalCleaner purge old
             events from your calendars. 🗓️🧹️
         </p>
         <p xml:lang="hr">
             Čistač kalendara (CalCleaner) je jednostavan alat za brisanje starih događaja iz CalDAV kalendara.
         </p>
         <p xml:lang="hr">
-            Poveži se s jednim ili više CalDAV računa (Nextcloud, Google Calendar, iCloud, …), odaberi kalendare za čišćenje, odredi željenu maksimalnu starost događaja koje želiš zadržati i pritisnuti gumb „Očisti sada!” kako bi aplikacija „Čistač kalendara” izbrisala stare događaje iz tvojih kalendara. 🗓️🧹️
+            Poveži se s jednim ili više CalDAV računa (Nextcloud, Owncloud, …),
+            odaberi kalendare za čišćenje, odredi željenu maksimalnu starost
+            događaja koje želiš zadržati i pritisnuti gumb „Očisti sada!” kako
+            bi aplikacija „Čistač kalendara” izbrisala stare događaje iz tvojih
+            kalendara. 🗓️🧹️
         </p>
     </description>
 
@@ -71,6 +76,17 @@
     </screenshots>
 
     <releases>
+
+        <release version="1.1.4" date="2026-11-17">
+            <description>
+                <ul>
+                    <li>misc(deps): Fixed caldav dependency to &lt;2.0.0 due to breaking changes (@flozz, #25)</li>
+                    <li>docs: Updated dependencies install in doc (@moi90 #24)</li>
+                    <li>misc: Added Python 3.12, 3.13, 3.14, 3.15 support (@flozz)</li>
+                    <li>misc!: Removed Python 3.7, 3.8, 3.9, 3.10 support (@flozz)</li>
+                </ul>
+            </description>
+        </release>
 
         <release version="1.1.3" date="2023-05-26">
             <description>
