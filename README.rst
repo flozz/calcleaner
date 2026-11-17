@@ -227,8 +227,8 @@ Changelog
 
   * misc(deps): Fixed caldav dependency to ``<2.0.0`` due to breaking changes (@flozz, #25)
   * docs: Updated dependencies install in doc (@moi90 #24)
-  * misc: Added Python 3.12, 3.13, 3.14 support (@flozz)
-  * misc!: Removed Python 3.7, 3.8, 3.9 support (@flozz)
+  * misc: Added Python 3.12, 3.13, 3.14, 3.15 support (@flozz)
+  * misc!: Removed Python 3.7, 3.8, 3.9, 3.10 support (@flozz)
 
 * **v1.1.3:**
 
